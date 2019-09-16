@@ -38,7 +38,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/completedtasks/Launchers.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1054">
@@ -59,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/completedtasks/maintasktwo/UnitTwoTaskFour.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+            <state relative-caret-position="-170">
+              <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -114,8 +114,8 @@
         <option value="$PROJECT_DIR$/src/com/completedtasks/maintasktwo/UnitTwoTaskTwo.java" />
         <option value="$PROJECT_DIR$/src/com/completedtasks/maintasktwo/UnitTwoTaskThree.java" />
         <option value="$PROJECT_DIR$/src/com/completedtasks/maintasktwo/UnitTwoTaskfour.java" />
-        <option value="$PROJECT_DIR$/src/com/completedtasks/maintasktwo/UnitTwoTaskFour.java" />
         <option value="$PROJECT_DIR$/src/com/completedtasks/Launchers.java" />
+        <option value="$PROJECT_DIR$/src/com/completedtasks/maintasktwo/UnitTwoTaskFour.java" />
       </list>
     </option>
   </component>
@@ -173,7 +173,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1568667570271" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1568667714125" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
   <component name="RunDashboard">
@@ -221,12 +221,12 @@
       <workItem from="1568593419187" duration="11000" />
       <workItem from="1568619132930" duration="6711000" />
       <workItem from="1568632062624" duration="1660000" />
-      <workItem from="1568647011367" duration="15578000" />
+      <workItem from="1568647011367" duration="15721000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36867000" />
+    <option name="totallyTimeSpent" value="37010000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -349,13 +349,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/completedtasks/maintasktwo/UnitTwoTaskFour.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/completedtasks/Launchers.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
@@ -363,6 +356,13 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/completedtasks/maintasktwo/UnitTwoTaskFour.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170">
+          <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
         </state>
       </provider>
     </entry>

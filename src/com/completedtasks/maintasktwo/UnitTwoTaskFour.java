@@ -13,12 +13,23 @@ import java.util.Scanner;
  *  годы, кратные 4, 100 и 400 – високосные (например, 1600, 2000, 2400).
  */
 public class UnitTwoTaskFour {
-    //   boolean isLeapYear = ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0));
+    /**Checks is given year a leap or not.
+     *
+     * @param year
+     * @return true if current year s leap. False otherwise.
+     */
     public static boolean isYearLeap(int year) {
         if (year % 4 == 0 || year % 100 == 0 || year % 400 == 0) return true;
         else return false;
     }
 
+    /**Finds next date from give.
+     *
+     * @param day
+     * @param month
+     * @param year
+     * @return next date as String row (for example, "17.9.2019")
+     */
     public static String findNextDate(int day, int month, int year) {
         if (day > 31 || month > 12 || year < 0 || day < 1 || month < 1) return "Impossible date";
         boolean isLeapYear = isYearLeap(year);
