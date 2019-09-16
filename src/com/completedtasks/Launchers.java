@@ -6,7 +6,7 @@ import com.completedtasks.maintasktwo.*;
 import java.util.Scanner;
 
 public class Launchers {
-    /**Main launcher for tasks.
+    /**Launcher for tasks from Main tasks №1.
      *
      */
     public void mainTaskOneLauncher(){
@@ -63,7 +63,9 @@ public class Launchers {
                 System.exit(0);
         }
     }
-
+    /**Launcher for tasks from Main tasks №2.
+     *
+     */
     public static void mainTaskTwoLauncher(){
         Scanner input = new Scanner(System.in);
         System.out.println("Here's available tasks:" +
