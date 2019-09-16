@@ -1,4 +1,4 @@
-package com.company.Main_task_one;
+package com.completedtasks.maintaskone;
 
 import java.util.Scanner;
 
@@ -6,14 +6,14 @@ import java.util.Scanner;
  * (к примеру, число 1234567 реверсируется в число 7654321)
  *
  */
-public class Task_six {
+public class UnitOneTaskSix {
     /**Reverses numerals of given number. For example, number 123 will be reversed to 321.
      *
      * @param number that will be reversed
      * @return reversed number (int)
      */
     public static int reverse(int number){
-        int[] numerals= Task_four.toNumerals(number);
+        int[] numerals= UnitOneTaskFour.toNumerals(number);
         String reversedNumber="";
         for (int index=0; index<numerals.length; index++)
         reversedNumber+=numerals[index];

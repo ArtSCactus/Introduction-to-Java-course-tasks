@@ -1,11 +1,11 @@
-package com.company.Main_task_one;
+package com.completedtasks.maintaskone;
 
 import java.util.Scanner;
 
 /**Task condition: Написать программу, которая находит арифметическое и геометрическое
  * среднее цифр шестизначного числа N.
  */
-public class Task_five {
+public class UnitOneTaskFive {
     /**Calculates arithmetic average from given number (numerals)
      *
      * @param numerals (numbers) array
@@ -42,7 +42,7 @@ public class Task_five {
             System.out.println("Invalid data. Number must be 6-digit. Try again:");
             number=input.nextInt();
         }
-        int[] numerals=Task_four.toNumerals(number);
+        int[] numerals= UnitOneTaskFour.toNumerals(number);
         System.out.println("Results: " +
                 "\nArithmetic average: "+arithmeticAverage(numerals)+
                 "\nGeometric average "+geometricAverage(numerals));

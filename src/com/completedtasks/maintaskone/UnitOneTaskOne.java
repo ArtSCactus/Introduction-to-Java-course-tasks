@@ -1,11 +1,11 @@
-package com.company.Main_task_one;
+package com.completedtasks.maintaskone;
 
 import java.util.Scanner;
 
 /** Task condition:
  * Разработайте программу, которая проверяет, что числа a, b и c различны (одинаковы).
  */
-public class Task_one {
+public class UnitOneTaskOne {
     /** Checks three numbers are they equals or not.
      *
      * @param numberA
@@ -26,6 +26,6 @@ public class Task_one {
         long numberA=input.nextInt();
         long numberB=input.nextInt();
         long numberC=input.nextInt();
-        System.out.println("Answer: "+Task_one.is_different(numberA, numberB, numberC));
+        System.out.println("Answer: "+ UnitOneTaskOne.is_different(numberA, numberB, numberC));
     }
 }

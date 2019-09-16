@@ -1,11 +1,11 @@
-package com.company.Main_task_one;
+package com.completedtasks.maintaskone;
 
 import java.util.Scanner;
 
 /**Task condition: Разработайте небольшую программу, которая меняет метами содержимое двух целочисленных
  переменных a и b, не используя для этого дополнительных переменных.
  */
-public class Task_seven {
+public class UnitOneTaskSeven {
     /**Launches application, that accepts 2 numbers form console (entered by user) and swaps them (swaps variables).
      *
      */

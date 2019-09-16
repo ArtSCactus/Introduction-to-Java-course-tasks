@@ -1,4 +1,4 @@
-package com.company.Main_task_one;
+package com.completedtasks.maintaskone;
 
 import java.util.Scanner;
 
@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Разработайте программу, которая вычисляет, сколько это миллиграмм, грамм и тонн.
  *
  */
-public class Task_two {
+public class UnitOneTaskTwo {
 
     /**Converts mass, that given in kilograms into the milligrams.
      *

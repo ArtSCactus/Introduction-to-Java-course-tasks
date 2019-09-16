@@ -1,4 +1,4 @@
-package com.company.Main_task_one;
+package com.completedtasks.maintaskone;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -7,7 +7,7 @@ import java.util.Scanner;
  * (убывающую) последовательность (к примеру, число 1357 удовлетворяет условию, т.к. его цифры соответствуют следующему
  * неравенству: 1<3<5<7, т.е. идут в порядке возрастания ).
  */
-public class Task_four {
+public class UnitOneTaskFour {
     /**Checks the array is it placed in ascending order or not.
      *
      * @param numerals -  int array

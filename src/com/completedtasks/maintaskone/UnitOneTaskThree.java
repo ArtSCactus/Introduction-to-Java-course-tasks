@@ -1,4 +1,4 @@
-package com.company.Main_task_one;
+package com.completedtasks.maintaskone;
 
 import java.util.Scanner;
 
@@ -7,7 +7,7 @@ import java.util.Scanner;
  * Разработайте программу нахождения площади кольца, внешний радиус которого равен R1, а внутренний радиус равен R2.
  *
  */
-public class Task_three {
+public class UnitOneTaskThree {
 
     /**Calculates square of ring, that which make up by 2 circles with common center, with given interior and external radius.
      *
@@ -36,6 +36,6 @@ public class Task_three {
             if (interiorRadius>externalRadius) System.out.println("Invalid data. Interior radius MUST be less or equals external.");
         }
 
-        System.out.println("Answer: The ring square is " + Task_three.findSquare(interiorRadius, externalRadius));
+        System.out.println("Answer: The ring square is " + UnitOneTaskThree.findSquare(interiorRadius, externalRadius));
     }
 }
