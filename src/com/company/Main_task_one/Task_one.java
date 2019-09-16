@@ -17,7 +17,7 @@ public class Task_one {
         return numberA==numberB & numberB==numberC? true:false;
     }
 
-    /** Launches application. Contains user console interface.
+    /**Launches application. Contains console interface.
      *
      */
     public static void launch_app(){

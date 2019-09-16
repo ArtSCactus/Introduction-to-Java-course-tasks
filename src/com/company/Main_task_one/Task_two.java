@@ -35,7 +35,7 @@ public class Task_two {
         return mass/1000;
     }
 
-    /**Launches application. Contains user console interface.
+    /**Launches application. Contains console interface.
      *
      */
     public static void launch_app(){

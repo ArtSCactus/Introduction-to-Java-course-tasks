@@ -20,7 +20,7 @@ public class Task_three {
         else return Math.PI*Math.pow(interiorRadius,2)-Math.PI*Math.pow(externalRadius,2);
     }
 
-    /**Launches application. Contains user console interface.
+    /**Launches application. Contains console interface.
      *
      */
     public static void launch_app() {

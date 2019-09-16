@@ -35,7 +35,7 @@ public class Task_four {
      * @param number - number to split
      * @return int array with numerals in reversed order
      */
-    private static int[] toNumerals(int number){
+    public static int[] toNumerals(int number){
         int[] numerals = new int[0];
         for (int currentNumber=number, index=0; currentNumber>0; currentNumber/=10, index++){
             numerals= Arrays.copyOf(numerals, numerals.length+1);
@@ -43,6 +43,9 @@ public class Task_four {
         }
         return numerals;
 }
+    /**Launches application. Contains console interface.
+     *
+     */
     public static void launch_app(){
         Scanner input = new Scanner(System.in);
         System.out.print("Please, input 4-digit number:");
