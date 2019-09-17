@@ -31,7 +31,7 @@ public class UnitTwoTaskFour {
      * @return next date as String row (for example, "17.9.2019")
      */
     public static String findNextDate(int day, int month, int year) {
-        if (day > 31 || month > 12 || year < 0 || day < 1 || month < 1) return "Impossible date";
+        if (day > 31 || month > 12 || year < 0 || day < 1 || month < 1) return "Error. Impossible date: "+day+"."+month+"."+year;
         boolean isLeapYear = isYearLeap(year);
         switch (month) {
             case (2):

@@ -2,7 +2,7 @@ package com.completedtasks.maintaskone;
 
 import java.util.Scanner;
 
-/**Task condition: Разработайте небольшую программу, которая меняет метами содержимое двух целочисленных
+/**Task condition: Разработайте небольшую программу, которая меняет местами содержимое двух целочисленных
  переменных a и b, не используя для этого дополнительных переменных.
  */
 public class UnitOneTaskSeven {
