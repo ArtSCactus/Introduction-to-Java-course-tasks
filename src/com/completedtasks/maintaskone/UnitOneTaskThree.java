@@ -25,7 +25,7 @@ public class UnitOneTaskThree {
      */
     public static void launch_app() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Please, interior radius and external radius:\nExternal radius: ");
+        System.out.println("Please, enter interior radius and external radius:\nExternal radius: ");
         double externalRadius=input.nextDouble();
         System.out.println("Interior radius: ");
         double interiorRadius=input.nextDouble();
