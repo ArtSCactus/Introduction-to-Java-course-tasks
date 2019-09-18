@@ -14,18 +14,21 @@ public class UnitOneTaskOne {
      * @return true if all three numbers are equals. False otherwise.
      */
     private static boolean is_different (long numberA, long numberB, long numberC){
-        return numberA==numberB & numberB==numberC? true:false;
+        return numberA!=numberB & numberB!=numberC? true:false;
     }
 
     /**Launches application. Contains console interface.
      *
      */
-    public static void launch_app(){
+    public static void launch_app() {
         Scanner input = new Scanner (System.in);
         System.out.println("Please, input 3 integer numbers");
-        long numberA=input.nextInt();
-        long numberB=input.nextInt();
-        long numberC=input.nextInt();
+        System.out.print("Enter number A: ");
+        long numberA=input.nextLong();
+        System.out.print("Enter number B: ");
+        long numberB=input.nextLong();
+        System.out.print("Enter number C: ");
+        long numberC=input.nextLong();
         System.out.println("Answer: "+ UnitOneTaskOne.is_different(numberA, numberB, numberC));
     }
 }
