@@ -12,10 +12,10 @@ public class UnitOneTaskFive {
      * @return arithmetic average (double)
      */
     private static double arithmeticAverage(int[] numerals){
-        int sum=0;
+        double sum=0;
         for (int index=0; index<numerals.length; index++)
             sum+=numerals[index];
-        return sum/numerals.length;
+        return sum/(double)numerals.length;
     }
 
     /**Calculates geometric average from given numbers (numerals)
@@ -27,7 +27,7 @@ public class UnitOneTaskFive {
         double average=1;
         for (int index=0; index<numerals.length; index++)
             average*=numerals[index];
-        return Math.pow(average,1.0/numerals.length);
+        return Math.pow(average,1.0/(double)numerals.length);
     }
 
     /**Launches application. Contains console interface.

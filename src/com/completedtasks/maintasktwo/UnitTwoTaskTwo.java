@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class UnitTwoTaskTwo {
     private static int countHeads(int age){
         int heads=3;
-        for (int year=0; year<age; year++){
+      for (int year=0; year<age; year++){
             if (year<200) heads+=3;
             else heads+= year<300? 2:1;
         }

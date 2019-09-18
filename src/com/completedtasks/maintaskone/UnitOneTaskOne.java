@@ -21,14 +21,15 @@ public class UnitOneTaskOne {
      *
      */
     public static void launch_app() {
-        Scanner input = new Scanner (System.in);
+        Scanner input = new Scanner(System.in);
         System.out.println("Please, input 3 integer numbers");
         System.out.print("Enter number A: ");
-        long numberA=input.nextLong();
+        long numberA = input.nextLong();
         System.out.print("Enter number B: ");
-        long numberB=input.nextLong();
+        long numberB = input.nextLong();
         System.out.print("Enter number C: ");
-        long numberC=input.nextLong();
-        System.out.println("Answer: "+ UnitOneTaskOne.isDifferent(numberA, numberB, numberC));
+        long numberC = input.nextLong();
+        System.out.println("Answer: " + UnitOneTaskOne.isDifferent(numberA, numberB, numberC));
     }
+
 }
