@@ -13,7 +13,7 @@ public class UnitOneTaskOne {
      * @param numberC
      * @return true if all three numbers are equals. False otherwise.
      */
-    private static boolean is_different (long numberA, long numberB, long numberC){
+    private static boolean isDifferent (long numberA, long numberB, long numberC){
         return numberA!=numberB & numberB!=numberC? true:false;
     }
 
