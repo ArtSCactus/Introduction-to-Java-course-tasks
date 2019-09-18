@@ -29,6 +29,6 @@ public class UnitOneTaskOne {
         long numberB=input.nextLong();
         System.out.print("Enter number C: ");
         long numberC=input.nextLong();
-        System.out.println("Answer: "+ UnitOneTaskOne.is_different(numberA, numberB, numberC));
+        System.out.println("Answer: "+ UnitOneTaskOne.isDifferent(numberA, numberB, numberC));
     }
 }
