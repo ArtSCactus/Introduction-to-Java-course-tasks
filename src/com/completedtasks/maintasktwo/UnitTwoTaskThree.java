@@ -11,7 +11,7 @@ public class UnitTwoTaskThree {
     //Vowel letters in english language
     public static char[] vowelEn = {'a', 'e', 'i', 'o', 'u'};
     //Vowel letters in russian language
-    public static char[] vowelRu = {'а', 'а', 'и', 'е', 'ё', 'э', 'ы', 'у', 'ю', 'я'};
+    public static char[] vowelRu = {'а', 'о', 'и', 'е', 'ё', 'э', 'ы', 'у', 'ю', 'я'};
 
     /**
      * Checks is char array contains given char symbol.

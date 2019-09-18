@@ -43,7 +43,7 @@ public class UnitTwoTaskOne {
      * @return True if it triangle. False otherwise.
      */
     private static boolean isTriangle(double sideAB, double sideBC, double sideCA){
-        if (sideAB+sideBC<sideCA & sideAB+sideCA<sideBC & sideCA+sideBC<sideAB) return false;
+        if (sideAB+sideBC<=sideCA || sideAB+sideCA<=sideBC || sideCA+sideBC<=sideAB) return false;
         else return true;
     }
 

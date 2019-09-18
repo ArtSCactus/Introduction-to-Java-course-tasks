@@ -41,8 +41,7 @@ public class UnitTwoTaskFour {
                         else return "" + 1 + "." + (month + 1) + "." + year;
                     }
                 } else if (day == 28) {
-                    if (month + 1 > 12) return "" + 1 + "." + 1 + "." + (year + 1);
-                    else return "" + 1 + "." + (month + 1) + "." + year;
+                     return "" + 1 + "." + (month + 1) + "." + year;
                 } else if (day > 28) return "This year is leap and in this month no more than 28 days";
                 else {
                     return "" + (day + 1) + "." + month + "." + year;
@@ -50,13 +49,11 @@ public class UnitTwoTaskFour {
                 break;
             case (4):
                 if (day == 30) {
-                    if (month + 1 > 12) return "" + 1 + "." + 1 + "." + (year + 1);
-                    else return "" + 1 + "." + (month + 1) + "." + year;
+                    return "" + 1 + "." + (month + 1) + "." + year;
                 } else return "" + (day + 1) + "." + month + "." + year;
             case (6):
                 if (day == 30) {
-                    if (month + 1 > 12) return "" + 1 + "." + 1 + "." + (year + 1);
-                    else return "" + 1 + "." + (month + 1) + "." + year;
+                    return "" + 1 + "." + (month + 1) + "." + year;
                 } else return "" + (day + 1) + "." + month + "." + year;
             case (9):
                 if (day == 30) {
@@ -65,15 +62,14 @@ public class UnitTwoTaskFour {
                 } else return "" + (day + 1) + "." + month + "." + year;
             case (11):
                 if (day == 30) {
-                    if (month + 1 > 12) return "" + 1 + "." + 1 + "." + (year + 1);
-                    else return "" + 1 + "." + (month + 1) + "." + year;
+                    return "" + 1 + "." + (month + 1) + "." + year;
                 } else return "" + (day + 1) + "." + month + "." + year;
             case (12):
                 if (day == 31) {
                     return "" + 1 + "." + 1 + "." + (year + 1);
                 } else return "" + (day + 1) + "." + month + "." + year;
             default:
-                if (day == 31) if (day == 31) {
+               if (day == 31) {
                     return "" + 1 + "." + (month + 1) + "." + year;
                 } else return "" + (day + 1) + "." + month + "." + year;
         }

@@ -8,9 +8,10 @@ import java.util.Scanner;
  * неравенству: 1<3<5<7, т.е. идут в порядке возрастания ).
  */
 public class UnitOneTaskFour {
-    /**Checks the array is it placed in ascending order or not.
+
+    /**Checks the array (in reversed order) is it placed in ascending order or not.
      *
-     * @param numerals -  int array
+     * @param numerals -  int array of numbers in reversed order
      * @return true if given array is placed in ascending order. False otherwise.
      */
     private static boolean isAscendingOrder(int[] numerals){
@@ -19,9 +20,9 @@ public class UnitOneTaskFour {
             return true;
     }
 
-    /**Checks the array is it placed in descending order or not.
+    /**Checks the array (in reversed order) is it placed in descending order or not.
      *
-     * @param numerals -  int massive
+     * @param numerals -  int array in reversed order
      * @return true if given array is placed in Descending order. False otherwise.
      */
     private static boolean isDescendingOrder(int[] numerals){
