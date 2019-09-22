@@ -1,16 +1,17 @@
 package com.completedtasks;
 
 import com.completedtasks.maintaskone.*;
-import com.completedtasks.maintaskthree.HeadsOrTrails;
+import com.completedtasks.maintaskthree.ComplexSolver;
+import com.completedtasks.maintaskthree.HeadsOrTails;
 import com.completedtasks.maintasktwo.*;
 
 import java.util.Scanner;
 
 public class Launchers {
-    /**Launcher for tasks from Main tasks №1.
-     *
+    /**
+     * Launcher for tasks from Main tasks №1.
      */
-    public void mainTaskOneLauncher(){
+    public void mainTaskOneLauncher() {
         Scanner input = new Scanner(System.in);
         System.out.println("Here's available tasks:" +
                 "\n1) Task №1: Разработайте программу, которая проверяет, что числа a,b и c различны (одинаковы)\n" +
@@ -35,39 +36,40 @@ public class Launchers {
         int choice;
         while (true) {
             choice = input.nextInt();
-            if (choice<0 | choice> 7) System.out.println("No such unit number. Please, try again.");
+            if (choice < 0 | choice > 7) System.out.println("No such unit number. Please, try again.");
             else break;
         }
-        switch (choice){
-            case(1):
-       UnitOneTaskOne.launch_app();
+        switch (choice) {
+            case (1):
+                UnitOneTaskOne.launch_app();
                 break;
-            case(2):
+            case (2):
                 UnitOneTaskTwo.launch_app();
                 break;
-            case(3):
+            case (3):
                 UnitOneTaskThree.launch_app();
                 break;
-            case(4):
+            case (4):
                 UnitOneTaskFour.launch_app();
                 break;
-            case(5):
+            case (5):
                 UnitOneTaskFive.launch_app();
                 break;
-            case(6):
+            case (6):
                 UnitOneTaskSix.launch_app();
                 break;
-            case(7):
+            case (7):
                 UnitOneTaskSeven.launch_app();
                 break;
             default:
                 System.exit(0);
         }
     }
-    /**Launcher for tasks from Main tasks №2.
-     *
+
+    /**
+     * Launcher for tasks from Main tasks №2.
      */
-    public static void mainTaskTwoLauncher(){
+    public static void mainTaskTwoLauncher() {
         Scanner input = new Scanner(System.in);
         System.out.println("Here's available tasks:" +
                 "\n1) Task №1:  На прямоугольной декартовой системе координат на плоскости заданы три точки с \n" +
@@ -86,24 +88,24 @@ public class Launchers {
                 " (используется в настоящий момент) високосный год определяется следующим образом:\n" +
                 " годы, кратные 4 – високосные (например, 2008, 2012, 2016);\n" +
                 " годы, кратные 4 и 100 – невисокосные (например, 1700, 1800, 1900);\n" +
-                " годы, кратные 4, 100 и 400 – високосные (например, 1600, 2000, 2400)."+
+                " годы, кратные 4, 100 и 400 – високосные (например, 1600, 2000, 2400)." +
                 "\n0) Exit" +
                 "\n Please, choose the task number");
         int choice;
         //Validation is entered task number correct
         while (true) {
             choice = input.nextInt();
-            if (choice<0 | choice> 4) System.out.println("No such unit number. Please, try again.");
+            if (choice < 0 | choice > 4) System.out.println("No such unit number. Please, try again.");
             else break;
         }
-        switch (choice){
-            case(1):
+        switch (choice) {
+            case (1):
                 UnitTwoTaskOne.launch_app();
                 break;
-            case(2):
+            case (2):
                 UnitTwoTaskTwo.launch_app();
                 break;
-            case(3):
+            case (3):
                 UnitTwoTaskThree.launch_app();
                 break;
             case (4):
@@ -113,29 +115,40 @@ public class Launchers {
                 System.exit(0);
         }
     }
-    /**Launcher for tasks from Main tasks №3.
-     *
+
+    /**
+     * Launcher for tasks from Main tasks №3.
      */
-    public static void mainTaskThreeLauncher(){
+    public static void mainTaskThreeLauncher() {
         Scanner input = new Scanner(System.in);
         System.out.println("Here's available tasks:" +
                 "\n1) Task №1:  Необходимо написать программу «Heads or Tails?» («Орёл или решка?»), " +
-                        "которая бы «подбрасывала» условно монету, к примеру, 1000 раз и сообщала, " +
-                        "сколько раз выпал орёл, а сколько – решка."+
+                "которая бы «подбрасывала» условно монету, к примеру, 1000 раз и сообщала, " +
+                "сколько раз выпал орёл, а сколько – решка." +
+                "\n2) Task №2:  Разработать наиболее эффективные алгоритмы и написать код для решения следующих задач:\n" +
+                "  - найти наибольшую цифру натурального числа;\n" +
+                "  - проверить, является ли заданное натуральное число палиндромом;\n" +
+                "  - определить является ли заданное натуральное число простым;\n" +
+                "  - найти все простые делители заданного натурального числа;\n" +
+                "  - найти НОД и НОК двух натуральных чисел a и b.\n" +
+                "  - найти количество различных цифр у заданного натурального числа." +
                 "\n0) Exit" +
                 "\n Please, choose the task number");
         int choice;
         //Validation is entered task number correct
         while (true) {
             choice = input.nextInt();
-            if (choice<0 | choice> 4) System.out.println("No such unit number. Please, try again.");
+            if (choice < 0 | choice > 4) System.out.println("No such unit number. Please, try again.");
             else break;
         }
-        switch (choice){
-            case(1):
-                HeadsOrTrails testApp =new HeadsOrTrails();
-                testApp.launchApp();
+        switch (choice) {
+            case (1):
+                HeadsOrTails testApp = new HeadsOrTails();
+                testApp.run();
                 break;
+            case (2):
+                ComplexSolver testSolver = new ComplexSolver();
+                testSolver.run();
             default:
                 System.exit(0);
         }
