@@ -10,11 +10,13 @@ public class Main {
 	System.out.println("Welcome stranger. Here's available units:" +
             "\n1) Main task one" +
             "\n2) Main task two" +
+            "\n3) Main task three" +
+            "\n0) Exit"+
             "\nPlease, choose the unit number");
         int choice;
 	while (true) {
          choice= input.nextInt();
-        if (choice>2 | choice<0) System.out.println("No such unit number. Please, try again.");
+        if (choice>3 | choice<0) System.out.println("No such unit number. Please, try again.");
         else break;
     }
 	switch (choice){
@@ -24,7 +26,11 @@ public class Main {
         case(2):
             launcher.mainTaskTwoLauncher();
             break;
+        case(3):
+            launcher.mainTaskThreeLauncher();
+            break;
         default:
+            System.exit(0);
     }
     }
 }

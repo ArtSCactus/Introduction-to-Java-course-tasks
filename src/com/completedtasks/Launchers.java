@@ -1,6 +1,7 @@
 package com.completedtasks;
 
 import com.completedtasks.maintaskone.*;
+import com.completedtasks.maintaskthree.HeadsOrTrails;
 import com.completedtasks.maintasktwo.*;
 
 import java.util.Scanner;
@@ -107,6 +108,33 @@ public class Launchers {
                 break;
             case (4):
                 UnitTwoTaskFour.launch_app();
+                break;
+            default:
+                System.exit(0);
+        }
+    }
+    /**Launcher for tasks from Main tasks №3.
+     *
+     */
+    public static void mainTaskThreeLauncher(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Here's available tasks:" +
+                "\n1) Task №1:  Необходимо написать программу «Heads or Tails?» («Орёл или решка?»), " +
+                        "которая бы «подбрасывала» условно монету, к примеру, 1000 раз и сообщала, " +
+                        "сколько раз выпал орёл, а сколько – решка."+
+                "\n0) Exit" +
+                "\n Please, choose the task number");
+        int choice;
+        //Validation is entered task number correct
+        while (true) {
+            choice = input.nextInt();
+            if (choice<0 | choice> 4) System.out.println("No such unit number. Please, try again.");
+            else break;
+        }
+        switch (choice){
+            case(1):
+                HeadsOrTrails testApp =new HeadsOrTrails();
+                testApp.launchApp();
                 break;
             default:
                 System.exit(0);
