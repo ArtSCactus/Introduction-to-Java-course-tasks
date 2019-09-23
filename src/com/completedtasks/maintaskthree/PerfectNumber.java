@@ -45,7 +45,7 @@ public class PerfectNumber {
      *
      * @param number that will be validates
      * @return true if given number is perfect. False otherwise.
-     * @see PerfectNumber#findDividers(int)
+     * @see PerfectNumber#findDividers(int) more information about findDividers(int) method
      * @since 1.0
      */
     public boolean isPerfect(int number) {
@@ -66,7 +66,7 @@ public class PerfectNumber {
      * Contains validation: "is given number bigger than 1". If entered number is invalid, asks to enter again.
      *
      * @return int number
-     * @see Scanner
+     * @see Scanner more information about Scanner class
      * @since 1.0
      */
     private int readNumber() {
@@ -84,8 +84,8 @@ public class PerfectNumber {
      * Runs application.
      * Call at first method {@code readNumber()}. After that prints to console result of method {@code isPerfect()}.
      *
-     * @see PerfectNumber#readNumber()
-     * @see PerfectNumber#isPerfect(int)
+     * @see PerfectNumber#readNumber() more information about readNumber() method
+     * @see PerfectNumber#isPerfect(int) more information about isPerfect() method
      * @since 1.0
      */
     public void run() {

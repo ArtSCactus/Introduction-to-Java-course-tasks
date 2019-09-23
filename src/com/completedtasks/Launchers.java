@@ -2,6 +2,7 @@ package com.completedtasks;
 
 import com.completedtasks.maintaskone.*;
 import com.completedtasks.maintaskthree.ComplexSolver;
+import com.completedtasks.maintaskthree.FriendlyNumbers;
 import com.completedtasks.maintaskthree.HeadsOrTails;
 import com.completedtasks.maintaskthree.PerfectNumber;
 import com.completedtasks.maintasktwo.*;
@@ -135,8 +136,13 @@ public class Launchers {
                 "  - найти количество различных цифр у заданного натурального числа." +
                 "\n3) Task №3: Натуральное число называют совершенным, если оно равно сумме всех своих делителей,\n" +
                 "не считая только его самого (например, 28=1+2+3+7+14 – совершенное число). Напишите программу,\n" +
-                "которая проверяет, является ли введённое натуральное число совершенным. Для проверки работоспособности\n" +
+                "которая проверяет, является ли введённое натуральное число совершенным. Для проверки работоспособности.\n" +
                 "программы приводится список некоторых совершенных чисел: 6, 28, 496, 8128." +
+                "\n4) Task №4: Дру́жественные чи́сла — два различных натуральных числа, для которых сумма всех\n" +
+                "собственных делителей первого числа равна второму числу и наоборот, сумма всех собственных делителей\n" +
+                "второго числа равна первому числу. Дружественные числа были открыты последователями Пифагора, которые,\n" +
+                "однако, знали только одну пару дружественных чисел – 220 и 284. \n" +
+                "Найдите все дружественные числа в заданном диапазоне." +
                 "\n0) Exit" +
                 "\n Please, choose the task number: ");
         int choice;
@@ -158,6 +164,10 @@ public class Launchers {
             case(3):
                 PerfectNumber testPerfectNumber = new PerfectNumber();
                 testPerfectNumber.run();
+                break;
+            case(4):
+                FriendlyNumbers testFriendlyNumbers = new FriendlyNumbers();
+                testFriendlyNumbers.run();
                 break;
             default:
                 System.exit(0);
