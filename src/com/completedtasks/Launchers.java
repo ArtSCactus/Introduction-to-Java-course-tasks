@@ -161,11 +161,11 @@ public class Launchers {
                 ComplexSolver testSolver = new ComplexSolver();
                 testSolver.run();
                 break;
-            case(3):
+            case (3):
                 PerfectNumber testPerfectNumber = new PerfectNumber();
                 testPerfectNumber.run();
                 break;
-            case(4):
+            case (4):
                 FriendlyNumbers testFriendlyNumbers = new FriendlyNumbers();
                 testFriendlyNumbers.run();
                 break;

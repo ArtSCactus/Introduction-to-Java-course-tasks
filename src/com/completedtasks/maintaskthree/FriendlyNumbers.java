@@ -17,8 +17,7 @@ public class FriendlyNumbers {
      * Returns list of dividers for current number.
      * <p>
      * Type of returning value is {@code List<Integer>} realized by {@code ArrayList<Integer>() }.
-     * If no dividers for this number found, returns null;
-     * This method does includes given number as divider.
+     * This method does not includes given number as divider.
      *
      * @param number for which will be searched dividers
      * @return List<Integer> dividers if at least 1 divider found. Null otherwise.
@@ -27,12 +26,11 @@ public class FriendlyNumbers {
      */
     private List<Integer> findDividers(int number) {
         List<Integer> dividers = new ArrayList<>();
-        for (int potentialDivider = 1; potentialDivider <= number; potentialDivider++) {
+        for (int potentialDivider = 1; potentialDivider < number; potentialDivider++) {
             if (number % potentialDivider == 0) {
                 dividers.add(potentialDivider);
             }
         }
-        if (dividers.size() == 0) return null;
         return dividers;
     }
 
@@ -68,7 +66,7 @@ public class FriendlyNumbers {
      * @see FriendlyNumbers#findDividersSum(int) more infromation about method findDividerSum(int).
      */
     private boolean isFriendlyNumbers(int numberA, int numberB) {
-        if (findDividersSum(numberA) == findDividersSum(numberB)) {
+        if (findDividersSum(numberA) == numberB & findDividersSum(numberB) == numberA) {
             return true;
         } else {
             return false;
