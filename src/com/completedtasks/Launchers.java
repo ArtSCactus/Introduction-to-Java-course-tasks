@@ -3,6 +3,7 @@ package com.completedtasks;
 import com.completedtasks.maintaskone.*;
 import com.completedtasks.maintaskthree.ComplexSolver;
 import com.completedtasks.maintaskthree.HeadsOrTails;
+import com.completedtasks.maintaskthree.PerfectNumber;
 import com.completedtasks.maintasktwo.*;
 
 import java.util.Scanner;
@@ -132,8 +133,12 @@ public class Launchers {
                 "  - найти все простые делители заданного натурального числа;\n" +
                 "  - найти НОД и НОК двух натуральных чисел a и b.\n" +
                 "  - найти количество различных цифр у заданного натурального числа." +
+                "\n3) Task №3: Натуральное число называют совершенным, если оно равно сумме всех своих делителей,\n" +
+                "не считая только его самого (например, 28=1+2+3+7+14 – совершенное число). Напишите программу,\n" +
+                "которая проверяет, является ли введённое натуральное число совершенным. Для проверки работоспособности\n" +
+                "программы приводится список некоторых совершенных чисел: 6, 28, 496, 8128." +
                 "\n0) Exit" +
-                "\n Please, choose the task number");
+                "\n Please, choose the task number: ");
         int choice;
         //Validation is entered task number correct
         while (true) {
@@ -149,6 +154,11 @@ public class Launchers {
             case (2):
                 ComplexSolver testSolver = new ComplexSolver();
                 testSolver.run();
+                break;
+            case(3):
+                PerfectNumber testPerfectNumber = new PerfectNumber();
+                testPerfectNumber.run();
+                break;
             default:
                 System.exit(0);
         }

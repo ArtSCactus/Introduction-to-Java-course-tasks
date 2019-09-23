@@ -12,12 +12,12 @@ import java.util.*;
  * - найти НОД и НОК двух натуральных чисел a и b.
  * - найти количество различных цифр у заданного натурального числа.
  *
- *   !!!Will be reorganized soon!!!
- *
  * @author ArtSCactus
- * @version 0.9
+ * @version 1.0
  */
 public class ComplexSolver {
+    /** maximal possible numeral in a number*/
+    private final int MAXIMAL_NUMERAL=9;
     /**
      * Asks user to input the number and validates is it natural. If it is natural, returns this number.
      * Other wise asking to input again.
@@ -45,8 +45,12 @@ public class ComplexSolver {
         List<Integer> numerals = toNumerals(number);
         int biggestNumeral = numerals.get(0);
         for (int index = 0; index < numerals.size(); index++) {
-            if (biggestNumeral < numerals.get(index)) biggestNumeral = numerals.get(index);
-            if (numerals.get(index) == 9) return 9;
+            if (biggestNumeral < numerals.get(index)) {
+                biggestNumeral = numerals.get(index);
+            }
+            if (numerals.get(index) == MAXIMAL_NUMERAL) {
+                return MAXIMAL_NUMERAL;
+            }
         }
         return biggestNumeral;
     }
@@ -60,7 +64,9 @@ public class ComplexSolver {
     public boolean isPalindrome(int number) {
         List<Integer> numerals = toNumerals(number);
         for (int start = 0, end = numerals.size() - 1; start != end; start++, end--) {
-            if (numerals.get(start) != numerals.get(end)) return false;
+            if (numerals.get(start) != numerals.get(end)) {
+                return false;
+            }
         }
         return true;
     }
@@ -74,7 +80,7 @@ public class ComplexSolver {
     private boolean isPrime(int number) {
         if (number < 2) return false;
         for (int currentNumber = 2; currentNumber * currentNumber <= number; currentNumber++)
-            if (number % currentNumber == 0) {
+            if (number % currentNumber == 0) { //is currentNumber divider of number?
                 return false;
             }
         return true;
@@ -116,7 +122,7 @@ public class ComplexSolver {
     private List<Integer> findPrimeDividers(int number) {
         List<Integer> primeDividers = new ArrayList<>();
         for (int divider = 1; divider <= number; divider++) {
-            if (isPrime(divider) & number % divider == 0) {
+            if (isPrime(divider) & number % divider == 0) { //is current divider prime and divider of number?
                 primeDividers.add(divider);
             }
         }
@@ -156,6 +162,21 @@ public class ComplexSolver {
         return countedNumerals;
     }
 
+    /**Reads from console operation id and validates it.
+     * Reads from console operation id and starts the cycle, that will validating received operation id. If it wrong,
+     * asks to input it again.
+     * @return int operation id
+     */
+    private int readOperationID(){
+        Scanner input = new Scanner(System.in);
+        int operationID=input.nextInt();
+    //validation operation id input
+    while (operationID < 0 & operationID > 6) {
+        System.out.println("Number of tosses cannot be less than 1. Try again: ");
+        operationID = input.nextInt();
+    }
+    return operationID;
+}
     /**Runs the program and asks user which operation to choose.
      * Depends on user's choice calls different operations:
      * -find the biggest numeral
@@ -174,7 +195,6 @@ public class ComplexSolver {
      * @see ComplexSolver#countNumerals(int)
      */
     public void run() {
-        Scanner input = new Scanner(System.in);
         System.out.println("Please, choose the operation from list below:" +
                 "\n1) Find the biggest numeral." +
                 "\n2) Palindrome validation." +
@@ -183,12 +203,7 @@ public class ComplexSolver {
                 "\n5) Find GCD and LCM" +
                 "\n6) Amount of unique numerals" +
                 "\n0) Exit");
-        int operationID = input.nextInt();
-        // correct number of operation validation
-        while (operationID < 0 & operationID > 6) {
-            System.out.println("Number of tosses cannot be less than 1. Try again: ");
-            operationID = input.nextInt();
-        }
+        int operationID = readOperationID();
         int numberA;
         int numberB;
         switch (operationID) {
