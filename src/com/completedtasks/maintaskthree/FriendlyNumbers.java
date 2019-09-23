@@ -16,7 +16,7 @@ public class FriendlyNumbers {
     /**
      * Returns list of dividers for current number.
      * <p>
-     * Type of returning value is {@code List<Integer>} realized by {@codeArrayList<Integer>() }.
+     * Type of returning value is {@code List<Integer>} realized by {@code ArrayList<Integer>() }.
      * If no dividers for this number found, returns null;
      * This method does includes given number as divider.
      *
@@ -157,7 +157,7 @@ public class FriendlyNumbers {
         start=readNumber();
         System.out.print("End: ");
         end= readNumber();
-        //Validation on correct data
+        //Data validation
         if (end<start) {
             System.out.println("Invalid data. End cannot be less than start.");
             return;
