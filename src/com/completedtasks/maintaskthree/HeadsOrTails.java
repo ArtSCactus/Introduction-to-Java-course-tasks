@@ -29,7 +29,7 @@ public class HeadsOrTails {
      * Also contains method getRandom(), that return random object of enum Side;
      */
     private enum Side {
-        HEAD, tail;
+        HEAD, TAIL;
 
         /**
          * Returns random Side object (HEAD or tail).
@@ -47,8 +47,9 @@ public class HeadsOrTails {
      */
     private void readInput() {
         Scanner input = new Scanner(System.in);
-        System.out.print("Welcome! Let's play the game. How much times i should toss the coin? \nEnter here==>");
+        System.out.print("Welcome! Let's play the game. How much times should i toss the coin? \nEnter here==>");
         tosses = input.nextInt();
+
         while (tosses < 1) {
             System.out.println("Number of tosses cannot be less than 1. Try again: ");
             tosses = input.nextInt();
@@ -71,6 +72,7 @@ public class HeadsOrTails {
     private void countTosses() {
         heads = 0;
         tails = 0;
+
         for (int toss = 1; toss <= tosses; toss++) {
             if (toss() == Side.HEAD) heads++;
             else tails++;

@@ -28,6 +28,7 @@ public class PerfectNumber {
      */
     private List<Integer> findDividers(int number) {
         List<Integer> dividers = new ArrayList<>();
+
         for (int potentialDivider = 1; potentialDivider < number; potentialDivider++) {
             if (number % potentialDivider == 0) {
                 dividers.add(potentialDivider);
@@ -51,6 +52,7 @@ public class PerfectNumber {
     public boolean isPerfect(int number) {
         List<Integer> dividers = findDividers(number);
         int sum = 0;
+
         // summing all dividers
         for (int divider : dividers) {
             sum += divider;
@@ -73,6 +75,7 @@ public class PerfectNumber {
         Scanner input = new Scanner(System.in);
         System.out.print("Please, enter the number:\n==> ");
         int number = input.nextInt();
+
         while (number < 1) {
             System.out.println("Wrong data. Entered number is less than 1. There's no negative perfect number.\nTry again: ");
             number = input.nextInt();

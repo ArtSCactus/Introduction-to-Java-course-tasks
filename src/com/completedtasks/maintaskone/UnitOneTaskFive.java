@@ -13,8 +13,8 @@ public class UnitOneTaskFive {
      */
     private static double arithmeticAverage(int[] numerals){
         double sum=0;
-        for (int index=0; index<numerals.length; index++)
-            sum+=numerals[index];
+        for (int index = 0; index<numerals.length; index++)
+            sum += numerals[index];
         return sum/(double)numerals.length;
     }
 
@@ -25,9 +25,10 @@ public class UnitOneTaskFive {
      */
     private static double geometricAverage(int[] numerals){
         double average=1;
-        for (int index=0; index<numerals.length; index++)
+
+        for (int index = 0; index<numerals.length; index++)
             average*=numerals[index];
-        return Math.pow(average,1.0/(double)numerals.length);
+        return Math.pow(average, 1.0 / (double)numerals.length);
     }
 
     /**Launches application. Contains console interface.
@@ -37,8 +38,9 @@ public class UnitOneTaskFive {
         Scanner input = new Scanner (System.in);
         System.out.print("Please, enter 6-digit number: ");
         int number=input.nextInt();
+
         //By task condition number has to be 6-digit
-        while (number<100000 | number>999999) {
+        while (number < 100000 | number > 999999) {
             System.out.println("Invalid data. Number must be 6-digit. Try again:");
             number=input.nextInt();
         }

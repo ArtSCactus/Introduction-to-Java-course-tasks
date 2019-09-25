@@ -44,12 +44,13 @@ public class ComplexSolver {
     private int findBiggestNumeral(int number) {
         List<Integer> numerals = toNumerals(number);
         int biggestNumeral = numerals.get(0);
+
         for (int index = 0; index < numerals.size(); index++) {
-            if (biggestNumeral < numerals.get(index)) {
-                biggestNumeral = numerals.get(index);
-            }
             if (numerals.get(index) == MAXIMAL_NUMERAL) {
                 return MAXIMAL_NUMERAL;
+            }
+            if (biggestNumeral < numerals.get(index)) {
+                biggestNumeral = numerals.get(index);
             }
         }
         return biggestNumeral;
@@ -63,7 +64,8 @@ public class ComplexSolver {
      */
     public boolean isPalindrome(int number) {
         List<Integer> numerals = toNumerals(number);
-        for (int start = 0, end = numerals.size() - 1; start != end; start++, end--) {
+
+        for (int start = 0, end = numerals.size() - 1; start<=end; start++, end--) {
             if (numerals.get(start) != numerals.get(end)) {
                 return false;
             }
@@ -79,6 +81,7 @@ public class ComplexSolver {
      */
     private boolean isPrime(int number) {
         if (number < 2) return false;
+
         for (int currentNumber = 2; currentNumber * currentNumber <= number; currentNumber++)
             if (number % currentNumber == 0) { //is currentNumber divider of number?
                 return false;
@@ -94,6 +97,7 @@ public class ComplexSolver {
      * @return int GCD
      */
     private int gcd(int numberA, int numberB) {
+
         while (numberB != 0) {
             int temp = numberA % numberB;
             numberA = numberB;
@@ -121,6 +125,7 @@ public class ComplexSolver {
      */
     private List<Integer> findPrimeDividers(int number) {
         List<Integer> primeDividers = new ArrayList<>();
+
         for (int divider = 1; divider <= number; divider++) {
             if (isPrime(divider) & number % divider == 0) { //is current divider prime and divider of number?
                 primeDividers.add(divider);
@@ -138,6 +143,7 @@ public class ComplexSolver {
      */
     private List<Integer> toNumerals(int number) {
         List<Integer> numerals = new ArrayList<>();
+
         for (int currentNumber = number; currentNumber > 0; currentNumber /= 10) {
             numerals.add(currentNumber % 10);
         }
@@ -154,6 +160,7 @@ public class ComplexSolver {
     private Map<Integer, Integer> countNumerals(int number) {
         List<Integer> numerals = toNumerals(number);
         Map<Integer, Integer> countedNumerals = new HashMap<>();
+
         for (int numeral : numerals) {
             if (countedNumerals.containsKey(numeral)) {
                 countedNumerals.replace(numeral, countedNumerals.get(numeral), countedNumerals.get(numeral) + 1);
@@ -170,6 +177,7 @@ public class ComplexSolver {
     private int readOperationID(){
         Scanner input = new Scanner(System.in);
         int operationID=input.nextInt();
+
     //validation operation id input
     while (operationID < 0 & operationID > 6) {
         System.out.println("Number of tosses cannot be less than 1. Try again: ");

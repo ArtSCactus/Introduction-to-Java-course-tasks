@@ -15,6 +15,7 @@ public class UnitOneTaskSeven {
          double numberA = input.nextDouble();
          System.out.print("numberB=");
          double numberB = input.nextDouble();
+
         numberA+=numberB;
         numberB=numberA-numberB;
         numberA-=numberB;

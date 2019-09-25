@@ -15,8 +15,9 @@ public class UnitOneTaskSix {
     public static int reverse(int number){
         int[] numerals= UnitOneTaskFour.toNumerals(number);
         String reversedNumber="";
+
         for (int index=0; index<numerals.length; index++)
-        reversedNumber+=numerals[index];
+        reversedNumber += numerals[index];
         return Integer.parseInt(reversedNumber);
     }
     /**Launches application. Contains console interface.
@@ -26,6 +27,7 @@ public class UnitOneTaskSix {
         Scanner input = new Scanner (System.in);
         System.out.print("Please, enter 7-digit number: ");
         int number=input.nextInt();
+
         //By task condition number has to be 7-digit
         while (number<1000000 | number>9999999) {
             System.out.println("Invalid data. Number must be 7-digit. Try again:");

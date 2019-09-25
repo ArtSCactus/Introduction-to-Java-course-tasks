@@ -42,6 +42,7 @@ public class UnitOneTaskTwo {
         Scanner input = new Scanner(System.in);
         System.out.print("Please input dinosaur mass in kilograms: ");
         double massInKG=input.nextDouble();
+        
         //User input validation. Dinosaur mass cannot be less than 0.
         while (massInKG<0) {
             System.out.print("Invalid data. Dinosaur mass cannot be less than 0. Try again: ");

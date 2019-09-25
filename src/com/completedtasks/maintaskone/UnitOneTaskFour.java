@@ -15,8 +15,9 @@ public class UnitOneTaskFour {
      * @return true if given array is placed in ascending order. False otherwise.
      */
     private static boolean isAscendingOrder(int[] numerals){
-        for (int index=0; index<=numerals.length-2; index++)
-            if (numerals[index]<numerals[index+1]) return false;
+
+        for (int index = 0; index<=numerals.length-2; index++)
+            if (numerals[index] < numerals[index+1]) return false;
             return true;
     }
 
@@ -26,6 +27,7 @@ public class UnitOneTaskFour {
      * @return true if given array is placed in Descending order. False otherwise.
      */
     private static boolean isDescendingOrder(int[] numerals){
+
         for (int index=0; index<=numerals.length-2; index++)
             if (numerals[index]>numerals[index+1]) return false;
         return true;
@@ -38,6 +40,7 @@ public class UnitOneTaskFour {
      */
     public static int[] toNumerals(int number){
         int[] numerals = new int[0];
+
         for (int currentNumber=number, index=0; currentNumber>0; currentNumber/=10, index++){
             numerals= Arrays.copyOf(numerals, numerals.length+1);
             numerals[index]=currentNumber%10;
@@ -51,6 +54,7 @@ public class UnitOneTaskFour {
         Scanner input = new Scanner(System.in);
         System.out.print("Please, input 4-digit number:");
         int number= input.nextInt();
+
         //Input validation. By task condition number has to be 4-digit
         while (number<1000 | number>9999) {
             System.out.println("Invalid data. Number must be four-digit. Try again:");

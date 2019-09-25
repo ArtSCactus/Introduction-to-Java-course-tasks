@@ -29,6 +29,7 @@ public class UnitOneTaskThree {
         double externalRadius=input.nextDouble();
         System.out.println("Interior radius: ");
         double interiorRadius=input.nextDouble();
+
         //User input validation. Interior radius must be less or equals than external.
         while (interiorRadius > externalRadius) {
             interiorRadius = input.nextDouble();

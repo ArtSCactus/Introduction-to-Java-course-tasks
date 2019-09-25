@@ -26,6 +26,7 @@ public class FriendlyNumbers {
      */
     private List<Integer> findDividers(int number) {
         List<Integer> dividers = new ArrayList<>();
+
         for (int potentialDivider = 1; potentialDivider < number; potentialDivider++) {
             if (number % potentialDivider == 0) {
                 dividers.add(potentialDivider);
@@ -90,6 +91,7 @@ public class FriendlyNumbers {
     private Map<Integer, Integer> friendlyNumbersInRange(int start, int end){
         if (start>end) throw new IllegalArgumentException("Start of numbers line cannot be bigger than end");
         Map<Integer, Integer> friendlyNumbers= new HashMap<>();
+
         for (int primaryNumber=start; primaryNumber<=end; primaryNumber++){
             // by starting iteration from primaryNumber+1 we are escaping repeats to save time
             for (int secondaryNumber=primaryNumber+1; secondaryNumber<=end; secondaryNumber++)

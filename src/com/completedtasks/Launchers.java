@@ -146,12 +146,14 @@ public class Launchers {
                 "\n0) Exit" +
                 "\n Please, choose the task number: ");
         int choice;
+
         //Validation is entered task number correct
         while (true) {
             choice = input.nextInt();
             if (choice < 0 | choice > 4) System.out.println("No such unit number. Please, try again.");
             else break;
         }
+
         switch (choice) {
             case (1):
                 HeadsOrTails testApp = new HeadsOrTails();
