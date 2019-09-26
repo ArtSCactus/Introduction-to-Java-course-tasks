@@ -1,11 +1,11 @@
 package com.completedtasks;
 
-import com.completedtasks.maintaskone.*;
-import com.completedtasks.maintaskthree.ComplexSolver;
-import com.completedtasks.maintaskthree.FriendlyNumbers;
-import com.completedtasks.maintaskthree.HeadsOrTails;
-import com.completedtasks.maintaskthree.PerfectNumber;
-import com.completedtasks.maintasktwo.*;
+import com.completedtasks.unit1.part1.*;
+import com.completedtasks.unit2.ComplexSolver;
+import com.completedtasks.unit2.FriendlyNumbers;
+import com.completedtasks.unit2.HeadsOrTails;
+import com.completedtasks.unit2.PerfectNumber;
+import com.completedtasks.unit1.part2.*;
 
 import java.util.Scanner;
 
@@ -94,6 +94,7 @@ public class Launchers {
                 "\n0) Exit" +
                 "\n Please, choose the task number");
         int choice;
+
         //Validation is entered task number correct
         while (true) {
             choice = input.nextInt();
@@ -102,16 +103,16 @@ public class Launchers {
         }
         switch (choice) {
             case (1):
-                UnitTwoTaskOne.launch_app();
+                Triangle.launch_app();
                 break;
             case (2):
-                UnitTwoTaskTwo.launch_app();
+                DragonHeads.launch_app();
                 break;
             case (3):
-                UnitTwoTaskThree.launch_app();
+                Vowels.launch_app();
                 break;
             case (4):
-                UnitTwoTaskFour.launch_app();
+                NextDay.launch_app();
                 break;
             default:
                 System.exit(0);
@@ -153,7 +154,6 @@ public class Launchers {
             if (choice < 0 | choice > 4) System.out.println("No such unit number. Please, try again.");
             else break;
         }
-
         switch (choice) {
             case (1):
                 HeadsOrTails testApp = new HeadsOrTails();
