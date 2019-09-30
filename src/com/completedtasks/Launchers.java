@@ -6,6 +6,7 @@ import com.completedtasks.unit2.FriendlyNumbers;
 import com.completedtasks.unit2.HeadsOrTails;
 import com.completedtasks.unit2.PerfectNumber;
 import com.completedtasks.unit1.part2.*;
+import com.completedtasks.unit3.Matrix;
 
 import java.util.Scanner;
 
