@@ -21,12 +21,12 @@ public class MatrixTest {
     public void leastElement() {
         double[][] matrix = new double[][]{
                 {0, 1, 2, 3, 4},
-                {5, 6, -1, 8, 9},
+                {5, 6, -2, 8, 9},
                 {5, 9, 10, 99, 4},
                 {11, 12, 13, 14}
         };
         Matrix testObject = new Matrix(matrix);
-        Assert.assertEquals(-1, testObject.leastElement(),0.0000000001);
+        Assert.assertEquals(-2, testObject.leastElement(),0.0000000001);
     }
 
     @Test
@@ -58,6 +58,31 @@ public class MatrixTest {
         Matrix testObject = new Matrix(matrix);
         Assert.assertEquals(1, testObject.localMin(),0.0000000001);
     }
+
+    @Test
+    public void localMin_ONE_ELEMENT() {
+        double[][] matrix = new double[][]{
+                {5}
+        };
+        Matrix testObject = new Matrix(matrix);
+        Assert.assertEquals(5, testObject.localMin(),0.0000000001);
+    }
+    @Test
+    public void localMin_END_OF_ROW() {
+        double[][] matrix = new double[][]{
+                {7,6}
+        };
+        Matrix testObject = new Matrix(matrix);
+        Assert.assertEquals(6, testObject.localMin(),0.0000000001);
+    }
+    @Test
+    public void localMin_BEGINNING_OF_ROW() {
+        double[][] matrix = new double[][]{
+                {6,7}
+        };
+        Matrix testObject = new Matrix(matrix);
+        Assert.assertEquals(6, testObject.localMin(),0.0000000001);
+    }
     @Test
     public void localMinEqualElements() {
         double[][] matrix = new double[][]{
@@ -71,11 +96,38 @@ public class MatrixTest {
     @Test
     public void localMax() {
         double[][] matrix = new double[][]{
-                {5,9,5,5},
+                {5,5,9,5},
                 {5,5,10,5}
         };
         Matrix testObject = new Matrix(matrix);
-        Assert.assertEquals(9, testObject.localMax(),0.0000000001);
+        Assert.assertEquals(9,testObject.localMax(),0.0000000001);
+    }
+
+    @Test
+    public void localMax_ONE_ELEMENT() {
+        double[][] matrix = new double[][]{
+                {9}
+        };
+        Matrix testObject = new Matrix(matrix);
+        Assert.assertEquals(9,testObject.localMax(),0.0000000001);
+    }
+
+    @Test
+    public void localMax_END_OF_ROW() {
+        double[][] matrix = new double[][]{
+                {9,10}
+        };
+        Matrix testObject = new Matrix(matrix);
+        Assert.assertEquals(10,testObject.localMax(),0.0000000001);
+    }
+
+    @Test
+    public void localMax_BEGINNING_OF_ROW() {
+        double[][] matrix = new double[][]{
+                {10,9}
+        };
+        Matrix testObject = new Matrix(matrix);
+        Assert.assertEquals(10,testObject.localMax(),0.0000000001);
     }
 
     @Test
@@ -181,7 +233,7 @@ public class MatrixTest {
         Assert.assertArrayEquals(expected, testObject.getMatrix());
     }
     @Test
-    public void isSquare(){
+    public void isSquare_TRUE(){
         double[][] matrix = new double[][]{
                 {4,4,4,4},
                 {5,5,5,5},
@@ -190,5 +242,15 @@ public class MatrixTest {
         };
         Matrix testObject = new Matrix(matrix);
         Assert.assertEquals(true, testObject.isSquare());
+    }
+    @Test
+    public void isSquare_FALSE(){
+        double[][] matrix = new double[][]{
+                {4,4,4,4},
+                {5,5,5,5},
+                {6,6,6,6}
+        };
+        Matrix testObject = new Matrix(matrix);
+        Assert.assertEquals(false, testObject.isSquare());
     }
 }

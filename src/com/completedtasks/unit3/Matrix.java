@@ -40,7 +40,7 @@ public class Matrix {
      * @param columns - columns for matrix
      */
    public Matrix(int rows, int columns) {
-        matrix = new double[rows][columns];
+        matrix = new double [rows][columns];
     }
 
     /**Initializes matrix with given 2-dimensional array.
@@ -75,9 +75,7 @@ public class Matrix {
     private int countElements(){
         int counter=0;
        for (int row = 0; row<matrix.length; row++){
-           for (int column =0; column<matrix[row].length; column++){
-               counter++;
-           }
+          counter+=matrix[row].length;
        }
        return counter;
     }
@@ -90,7 +88,7 @@ public class Matrix {
     public void generate(int min, int max) {
         for (int rowIndex = 0; rowIndex < matrix.length; rowIndex++) {
             for (int columnIndex = 0; columnIndex < matrix[rowIndex].length; columnIndex++) {
-                matrix[rowIndex][columnIndex] = (int) (Math.random() * max) + min;
+                matrix[rowIndex][columnIndex] = (double) (Math.random() * max) + min;
             }
         }
     }
@@ -101,7 +99,7 @@ public class Matrix {
      * @return (double) biggest element
      */
     public double biggestElement() {
-        double biggestElement = matrix[0][0];
+       double biggestElement = matrix[0][0];
         for (int rowIndex = 0; rowIndex < matrix.length; rowIndex++) {
             for (int columnIndex = 0; columnIndex < matrix[rowIndex].length; columnIndex++) {
                 if (biggestElement < matrix[rowIndex][columnIndex]) {
@@ -173,11 +171,19 @@ public class Matrix {
      */
     public double localMin() {
         for (int row = 0; row < matrix.length; row++) {
+            //only one element or in the beginning of the row
+            if (matrix[row].length==1 || matrix[row][0]<matrix[row][1]){
+                return matrix[row][0];
+            }
             for (int column = 1; column <= matrix[row].length-2; column++) {
                 if (matrix[row][column] < matrix[row][column + 1] &
                         matrix[row][column] < matrix[row][column - 1]) {
                     return matrix[row][column];
                 }
+            }
+            //element is in the end of row
+            if(matrix[row][matrix[row].length-1]<matrix[row][matrix[row].length-2]){
+                return matrix[row][matrix[row].length-1];
             }
         }
         return -1;
@@ -192,14 +198,21 @@ public class Matrix {
     public double localMax() {
 
         for (int row = 0; row <matrix.length; row++) {
+            //only one element or in the beginning of the row
+            if (matrix[row].length==1 || matrix[row][0]>matrix[row][1]){
+                return matrix[row][0];
+            }
             for (int column = 1; column <= matrix[row].length-2; column++) {
                 if (matrix[row][column] > matrix[row][column + 1] &
                         matrix[row][column] > matrix[row][column - 1]) {
                     return matrix[row][column];
                 }
             }
+            //element is in the end of row
+            if(matrix[row][matrix[row].length-1]>matrix[row][matrix[row].length-2]){
+                return matrix[row][matrix[row].length-1];
+            }
         }
-
         return localMin();
     }
 
@@ -208,7 +221,7 @@ public class Matrix {
      * Transposes only square and rectangular matrix.
      * Deprecated to use on two-dimensional arrays with variable length rows.
      * If this method will be used on two-dimensional arrays with variable length rows, matrix will be translated to
-     * square matrix type, where all where all missed elements will be 0. Example:
+     * square matrix type, where all missed elements will be 0. Example:
      * 4 2
      * 4
      * 4 6
@@ -398,4 +411,5 @@ public class Matrix {
         }
         return twoDimArray;
     }
+
 }

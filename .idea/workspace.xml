@@ -9,24 +9,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/completedtasks/unit3/Matrix.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3672">
-              <caret line="234" column="56" selection-start-line="234" selection-start-column="56" selection-end-line="234" selection-end-column="56" />
-              <folding>
-                <element signature="e#1080#1081#0" expanded="true" />
-                <element signature="e#1120#1121#0" expanded="true" />
-                <element signature="e#1465#1466#0" expanded="true" />
-                <element signature="e#1512#1513#0" expanded="true" />
-                <element signature="e#1610#1611#0" expanded="true" />
-                <element signature="e#1652#1653#0" expanded="true" />
-                <element signature="e#1734#1735#0" expanded="true" />
-                <element signature="e#1763#1764#0" expanded="true" />
-                <element signature="e#1903#1904#0" expanded="true" />
-                <element signature="e#1941#1942#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-908">
+              <caret line="176" column="13" lean-forward="true" selection-start-line="176" selection-start-column="13" selection-end-line="176" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -34,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/completedtasks/unit3/MatrixTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="67" column="29" selection-start-line="67" selection-start-column="29" selection-end-line="67" selection-end-column="29" />
+            <state relative-caret-position="860">
+              <caret line="249" column="26" lean-forward="true" selection-start-line="249" selection-start-column="26" selection-end-line="249" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -46,8 +34,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/completedtasks/Launchers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
+            <state relative-caret-position="537">
               <caret line="154" column="39" selection-start-line="154" selection-start-column="39" selection-end-line="154" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/completedtasks/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -57,8 +54,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Arquillian JUnit Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -67,6 +64,7 @@
       <find>size</find>
       <find>int[][]</find>
       <find>int</find>
+      <find>T</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -77,8 +75,10 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/completedtasks/unit3/JUnit3Test.java" />
         <option value="$PROJECT_DIR$/src/com/completedtasks/Launchers.java" />
+        <option value="$PROJECT_DIR$/src/com/completedtasks/unit3/MatrixFactory.java" />
         <option value="$PROJECT_DIR$/src/com/completedtasks/unit3/Matrix.java" />
         <option value="$PROJECT_DIR$/src/com/completedtasks/unit3/MatrixTest.java" />
+        <option value="$PROJECT_DIR$/src/com/completedtasks/Main.java" />
       </list>
     </option>
   </component>
@@ -94,6 +94,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -130,8 +132,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -141,7 +141,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569883810644" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570023634502" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -216,8 +216,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.MatrixTest" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.MatrixTest.transposeExceptionCase" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -247,55 +247,56 @@
       <workItem from="1569273094412" duration="210000" />
       <workItem from="1569407517230" duration="4402000" />
       <workItem from="1569512534533" duration="12862000" />
-      <workItem from="1569861690396" duration="22052000" />
+      <workItem from="1569861690396" duration="23355000" />
+      <workItem from="1569922331176" duration="42000" />
+      <workItem from="1570019127692" duration="4058000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MatrixTest - 2019.09.30 at 23h 57m 57s.xml">
+    <history-entry file="MatrixTest - 2019.10.02 at 15h 48m 21s.xml">
       <configuration name="MatrixTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MatrixTest - 2019.09.30 at 23h 58m 31s.xml">
+    <history-entry file="MatrixTest - 2019.10.02 at 15h 49m 05s.xml">
       <configuration name="MatrixTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MatrixTest - 2019.10.01 at 00h 20m 29s.xml">
+    <history-entry file="MatrixTest - 2019.10.02 at 15h 49m 40s.xml">
       <configuration name="MatrixTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MatrixTest - 2019.10.01 at 00h 22m 12s.xml">
+    <history-entry file="MatrixTest - 2019.10.02 at 15h 49m 48s.xml">
       <configuration name="MatrixTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MatrixTest - 2019.10.01 at 00h 56m 01s.xml">
+    <history-entry file="MatrixTest - 2019.10.02 at 15h 51m 21s.xml">
       <configuration name="MatrixTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MatrixTest - 2019.10.01 at 01h 41m 15s.xml">
+    <history-entry file="MatrixTest - 2019.10.02 at 15h 54m 00s.xml">
       <configuration name="MatrixTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MatrixTest - 2019.10.01 at 01h 43m 21s.xml">
+    <history-entry file="MatrixTest - 2019.10.02 at 16h 24m 56s.xml">
       <configuration name="MatrixTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MatrixTest - 2019.10.01 at 01h 45m 52s.xml">
+    <history-entry file="MatrixTest_transposeExceptionCase - 2019.10.02 at 16h 25m 01s.xml">
+      <configuration name="MatrixTest.transposeExceptionCase" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MatrixTest - 2019.10.02 at 16h 25m 49s.xml">
       <configuration name="MatrixTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MatrixTest - 2019.10.01 at 01h 46m 34s.xml">
-      <configuration name="MatrixTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MatrixTest - 2019.10.01 at 01h 46m 55s.xml">
+    <history-entry file="MatrixTest - 2019.10.02 at 16h 32m 49s.xml">
       <configuration name="MatrixTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117063000" />
+    <option name="totallyTimeSpent" value="122466000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="UI Designer" order="1" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.2553305" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="1" weight="0.32936078" />
@@ -386,13 +387,7 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/completedtasks/unit3/JUnit3Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/completedtasks/unit3/JUnit3Test.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/ParentRunner.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -420,39 +415,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/completedtasks/unit3/MatrixFactory.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/completedtasks/unit3/Matrix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-908">
+          <caret line="176" column="13" lean-forward="true" selection-start-line="176" selection-start-column="13" selection-end-line="176" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/completedtasks/Launchers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
+        <state relative-caret-position="537">
           <caret line="154" column="39" selection-start-line="154" selection-start-column="39" selection-end-line="154" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/completedtasks/unit3/MatrixTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="67" column="29" selection-start-line="67" selection-start-column="29" selection-end-line="67" selection-end-column="29" />
+        <state relative-caret-position="860">
+          <caret line="249" column="26" lean-forward="true" selection-start-line="249" selection-start-column="26" selection-end-line="249" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/completedtasks/unit3/Matrix.java">
+    <entry file="file://$PROJECT_DIR$/src/com/completedtasks/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3672">
-          <caret line="234" column="56" selection-start-line="234" selection-start-column="56" selection-end-line="234" selection-end-column="56" />
-          <folding>
-            <element signature="e#1080#1081#0" expanded="true" />
-            <element signature="e#1120#1121#0" expanded="true" />
-            <element signature="e#1465#1466#0" expanded="true" />
-            <element signature="e#1512#1513#0" expanded="true" />
-            <element signature="e#1610#1611#0" expanded="true" />
-            <element signature="e#1652#1653#0" expanded="true" />
-            <element signature="e#1734#1735#0" expanded="true" />
-            <element signature="e#1763#1764#0" expanded="true" />
-            <element signature="e#1903#1904#0" expanded="true" />
-            <element signature="e#1941#1942#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
