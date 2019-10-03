@@ -1,6 +1,7 @@
 package com.completedtasks.unit3;
 
 import java.util.Arrays;
+
 /**
  * Task condition:
  * Задана матрица размера N x M. Необходимо выполнить следующие действия:
@@ -22,36 +23,39 @@ public class Matrix {
      */
     private double[][] matrix;
 
-    /**Initializes empty matrix.
-     *
+    /**
+     * Initializes empty matrix.
+     * <p>
      * Initializes double type matrix with length 0.
-     *
      */
-   public Matrix() {
+    public Matrix() {
         matrix = new double[0][];
     }
 
-    /**Initializes empty matrix with fixed rows and columns.
+    /**
+     * Initializes empty matrix with fixed rows and columns.
+     * <p>
+     * Initializes matrix of double type with given rows and column.
+     * Each element has default value (0).
      *
-     *  Initializes matrix of double type with given rows and column.
-     *  Each element has default value (0).
-     *
-     * @param rows - rows for matrix
+     * @param rows    - rows for matrix
      * @param columns - columns for matrix
      */
-   public Matrix(int rows, int columns) {
-        matrix = new double [rows][columns];
+    public Matrix(int rows, int columns) {
+        matrix = new double[rows][columns];
     }
 
-    /**Initializes matrix with given 2-dimensional array.
+    /**
+     * Initializes matrix with given 2-dimensional array.
      *
      * @param matrix
      */
-    public Matrix(double[][] matrix){
-       this.matrix= matrix;
+    public Matrix(double[][] matrix) {
+        this.matrix = matrix;
     }
 
-    /**Returns double type matrix.
+    /**
+     * Returns double type matrix.
      *
      * @return (double) matrix
      */
@@ -59,26 +63,29 @@ public class Matrix {
         return matrix;
     }
 
-    /**Returns amount of elements in the current matrix.
-     *
+    /**
+     * Returns amount of elements in the current matrix.
+     * <p>
      * Method calls private method countElements();
      *
-     * @see Matrix#countElements()
      * @return countElements();
+     * @see Matrix#countElements()
      */
-    public int size(){
+    public int size() {
         return countElements();
     }
-    /**Counts size of current matrix.
-     *
+
+    /**
+     * Counts size of current matrix.
      */
-    private int countElements(){
-        int counter=0;
-       for (int row = 0; row<matrix.length; row++){
-          counter+=matrix[row].length;
-       }
-       return counter;
+    private int countElements() {
+        int counter = 0;
+        for (int row = 0; row < matrix.length; row++) {
+            counter += matrix[row].length;
+        }
+        return counter;
     }
+
     /**
      * Generates matrix from random number.
      *
@@ -99,7 +106,7 @@ public class Matrix {
      * @return (double) biggest element
      */
     public double biggestElement() {
-       double biggestElement = matrix[0][0];
+        double biggestElement = matrix[0][0];
         for (int rowIndex = 0; rowIndex < matrix.length; rowIndex++) {
             for (int columnIndex = 0; columnIndex < matrix[rowIndex].length; columnIndex++) {
                 if (biggestElement < matrix[rowIndex][columnIndex]) {
@@ -160,64 +167,352 @@ public class Matrix {
             }
         }
 
-        return sum /countElements();
+        return sum / countElements();
     }
 
-    /**Returns first met local minimum.
+
+
+    /**Finds position of localMax/localMin in one row matrix.
      *
-     * If local minimum does not exists returns -1.
+     * This method is a part of {@code localMax()} and {@code localMin()} methods.
+     * Not an independent method.
      *
-     * @return (double) local minimum (matrix element) if it exists. -1 otherwise
+     * @param mode 1-for local max, 0 - for local min
+     * @return localMax/localMin's serial number (from top to down, from left on right)
      */
-    public double localMin() {
-        for (int row = 0; row < matrix.length; row++) {
-            //only one element or in the beginning of the row
-            if (matrix[row].length==1 || matrix[row][0]<matrix[row][1]){
-                return matrix[row][0];
-            }
-            for (int column = 1; column <= matrix[row].length-2; column++) {
-                if (matrix[row][column] < matrix[row][column + 1] &
-                        matrix[row][column] < matrix[row][column - 1]) {
-                    return matrix[row][column];
+    private int oneRowCase(int mode){
+        if (matrix.length==0){
+            return -1;
+        }
+        switch(mode) {
+            //for local maximum
+            case(1):
+                //only one element
+                if (matrix[0].length == 1) {
+                    return 0;
                 }
-            }
-            //element is in the end of row
-            if(matrix[row][matrix[row].length-1]<matrix[row][matrix[row].length-2]){
-                return matrix[row][matrix[row].length-1];
-            }
+                for (int column = 0; column < matrix[0].length; column++) {
+                    //beginning of the row
+                    if (column == 0) {
+                        if (matrix[0][0] > matrix[0][1]) {
+                            return column;
+                        }
+                    }
+                    //middle of the row
+                    if (column > 0 & column < matrix[0].length - 1) {
+                        if (matrix[0][column] > matrix[0][column - 1] &
+                                matrix[0][column] > matrix[0][column + 1]) {
+                            return column;
+                        }
+                    }
+                    //end of the row
+                    if (column == matrix[0].length - 1) {
+                        if (matrix[0][column] > matrix[0][column - 1]) {
+                            return column;
+                        }
+                    }
+                }
+                break;
+                //for local minimum
+            case(0):
+                //only one element
+                if (matrix[0].length == 1) {
+                    return 0;
+                }
+                for (int column = 0; column < matrix[0].length; column++) {
+                    //beginning of the row
+                    if (column == 0) {
+                        if (matrix[0][0] < matrix[0][1]) {
+                            return column;
+                        }
+                    }
+                    //middle of the row
+                    if (column > 0 & column < matrix[0].length - 1) {
+                        if (matrix[0][column] < matrix[0][column - 1] &
+                                matrix[0][column] < matrix[0][column + 1]) {
+                            return column;
+                        }
+                    }
+                    //end of the row
+                    if (column == matrix[0].length - 1) {
+                        if (matrix[0][column] < matrix[0][column - 1]) {
+                            return column;
+                        }
+                    }
+                }
+                break;
         }
         return -1;
     }
 
-    /**Returns first met local maximum.
+    /**Finds serial number of first localMax/localMin in the first row.
      *
+     * This method is a part of {@code localMax()} and {@code localMin()} methods.
+     * Not an independent method.
+     *
+     * @param counter - current serial number
+     * @param mode - 1 for local max mode, 0 - for local min mode
+     * @return if serial number wasn't, will be returned current counter (to continue search)
+     */
+    private int firstRowCase(int counter, int mode){
+        switch (mode) {
+            case(1):
+            for (int column = 0; column < matrix[0].length; column++) {
+                //start of row
+                if (column == 0) {
+                    if (matrix[0][column] > matrix[0][column + 1] &
+                            matrix[1][column] > matrix[0 + 1][column]) {
+                        return counter;
+                    }
+                } else {
+                    //middle of row
+                    if (column > 0 & column < matrix[0].length - 1) {
+                        if (matrix[0][column] > matrix[0][column + 1] &
+                                matrix[0][column] > matrix[0 + 1][column] &
+                                matrix[0][column] > matrix[0][column - 1]) {
+                            return counter;
+                        }
+                    }
+                }
+                //end of row
+                if (column == matrix[0].length - 1) {
+                    if (matrix[0][column] > matrix[0][column - 1] &
+                            matrix[0][column] > matrix[0 + 1][column]) {
+                        return counter;
+                    }
+                }
+                counter++;
+            }
+            break;
+            case(0):
+                for (int column = 0; column < matrix[0].length; column++) {
+                    //start of row
+                    if (column == 0) {
+                        if (matrix[0][column] < matrix[0][column + 1] &
+                                matrix[0][column] < matrix[0+ 1][column]) {
+                            return counter;
+                        }
+                    } else {
+                        //middle of row
+                        if (column > 0 & column < matrix[0].length - 1) {
+                            if (matrix[0][column] < matrix[0][column + 1] &
+                                    matrix[0][column] < matrix[0 + 1][column] &
+                                    matrix[0][column] < matrix[0][column - 1]) {
+                                return counter;
+                            }
+                        }
+                    }
+                    //end of row
+                    if (column == matrix[0].length - 1) {
+                        if (matrix[0][column] < matrix[0][column - 1] &
+                                matrix[0][column] < matrix[0 + 1][column]) {
+                            return counter;
+                        }
+                    }
+                    counter++;
+                }
+        }
+        return counter;
+    }
+
+    /**Finds serial number of local max or local min in the last row of matrix.
+     *
+     * This method is a part of {@code localMax()} and {@code localMin()} methods.
+     * Not an independent method.
+     *
+     * @param row - number of last row in matrix
+     * @param counter - current counter
+     * @param mode - 1 for local max mode, 0 for local min mode
+     * @return serial number of localMin/localMax in the last matrix row. Does not returns anything if it wasn't found.
+     */
+    private int lastRowCase(int row, int counter, int mode) {
+        switch (mode) {
+            //local max mode
+            case (1):
+                for (int column = 0; column < matrix[row].length; column++) {
+                    //beginning of the row
+                    if (column == 0) {
+                        if (matrix[row][column] > matrix[row][column + 1] &
+                                matrix[row][column] > matrix[row - 1][column]) {
+                            return counter;
+                        }
+                    } else {
+                        if (column > 0 & column < matrix[row].length - 1) {
+                            //middle of the row
+                            if (matrix[row][column] > matrix[row][column + 1] &
+                                    matrix[row][column] > matrix[row][column - 1] &
+                                    matrix[row][column] > matrix[row - 1][column]) {
+                                return counter;
+                            }
+                        }
+                    }
+                    //end of row
+                    if (column == matrix[row].length - 1) {
+                        if (matrix[row][column] > matrix[row][column - 1] &
+                                matrix[row][column] > matrix[row - 1][column]) {
+                            return counter;
+                        }
+                    }
+                    counter++;
+                }
+                break;
+                // local min mode
+            case (0):
+                for (int column = 0; column < matrix[row].length; column++) {
+                    //beginning of the row
+                    if (column == 0) {
+                        if (matrix[row][column] < matrix[row][column + 1] &
+                                matrix[row][column] < matrix[row - 1][column]) {
+                            return counter;
+                        }
+                    } else {
+                        if (column > 0 & column < matrix[row].length - 1) {
+                            //middle of the row
+                            if (matrix[row][column] < matrix[row][column + 1] &
+                                    matrix[row][column] < matrix[row][column - 1] &
+                                    matrix[row][column] < matrix[row - 1][column]) {
+                                return counter;
+                            }
+                        }
+                    }
+                    //end of row
+                    if (column == matrix[row].length - 1) {
+                        if (matrix[row][column] < matrix[row][column - 1] &
+                                matrix[row][column] < matrix[row - 1][column]) {
+                            return counter;
+                        }
+                    }
+                    counter++;
+                }
+                break;
+        }
+        return -1;
+    }
+    /**
+     * Returns serial number of first met local maximum.
+     * <p>
      * If local maximum does not exists, will be returned local minimum.
+     * Serial number begins from 0;
      *
      * @return (double) local maximum (matrix element) if it exists, localMin() otherwise.
      */
     public double localMax() {
+        if(matrix.length==0){
+            return -1;
+        }
+        if(matrix.length<2){
+            return oneRowCase(1); //1-for local max mode
+        }
+        int counter=0;
+        //More than 1 row
+        for (int row = 0; row < matrix.length; row++) {
+            if (row == 0) {
+                counter=firstRowCase(counter,1); // 1 - for local max mode
+            } else {
+                //not first and not last row
+                if (row > 0 & row < matrix.length - 1) {
 
-        for (int row = 0; row <matrix.length; row++) {
-            //only one element or in the beginning of the row
-            if (matrix[row].length==1 || matrix[row][0]>matrix[row][1]){
-                return matrix[row][0];
-            }
-            for (int column = 1; column <= matrix[row].length-2; column++) {
-                if (matrix[row][column] > matrix[row][column + 1] &
-                        matrix[row][column] > matrix[row][column - 1]) {
-                    return matrix[row][column];
+                    for (int column = 0; column <= matrix[row].length; column++) {
+                        //beginning of the row
+                        if (column == 0) {
+                            if (matrix[row][column] > matrix[row][column + 1] &
+                                    matrix[row][column] > matrix[row - 1][column] &
+                                    matrix[row][column] > matrix[row + 1][column]) {
+                                return counter;
+                            }
+                        } else {
+                            //middle of the row
+                            if (column > 0 & column < matrix[row].length - 1) {
+                                if (matrix[row][column] > matrix[row][column + 1] &
+                                        matrix[row][column] > matrix[row][column - 1] &
+                                        matrix[row][column] > matrix[row - 1][column] &
+                                        matrix[row][column] > matrix[row + 1][column]) {
+                                    return counter;
+                                }
+                            }
+                        }
+                        //end of the row
+                        if (column == matrix[row].length - 1) {
+                            if (matrix[row][column] > matrix[row][column - 1] &
+                                    matrix[row][column] > matrix[row - 1][column] &
+                                    matrix[row][column] > matrix[row + 1][column]) {
+                                return counter;
+                            }
+                        }
+                    }
+                } else {
+                   return lastRowCase(row,counter,1);//1 for local max mode
+                    }
                 }
             }
-            //element is in the end of row
-            if(matrix[row][matrix[row].length-1]>matrix[row][matrix[row].length-2]){
-                return matrix[row][matrix[row].length-1];
-            }
-        }
-        return localMin();
+            counter++; // next element
+        return -1;
     }
 
-    /**Transposes matrix.
+    /**
+     * Returns serial number of first met local minimum.
+     * <p>
+     * If local minimum does not exists returns -1.
+     * Serial number begins from 0.
      *
+     * @return (double) local minimum (matrix element) if it exists. -1 otherwise
+     */
+    public double localMin() {
+        if (matrix.length==0){
+            return -1;
+        }
+        if(matrix.length<2){
+            return oneRowCase(0); //1-for local max mode
+        }
+        int counter=0;
+        //More than 1 row
+        for (int row = 0; row < matrix.length; row++) {
+            if (row == 0) {
+                counter=firstRowCase(counter,0); // 1 - for local max mode
+            } else {
+                //not first and not last row
+                if (row > 0 & row < matrix.length - 1) {
+
+                    for (int column = 0; column <= matrix[row].length; column++) {
+                        //beginning of the row
+                        if (column == 0) {
+                            if (matrix[row][column] < matrix[row][column + 1] &
+                                    matrix[row][column] < matrix[row - 1][column] &
+                                    matrix[row][column] < matrix[row + 1][column]) {
+                                return counter;
+                            }
+                        } else {
+                            //middle of the row
+                            if (column > 0 & column < matrix[row].length - 1) {
+                                if (matrix[row][column] < matrix[row][column + 1] &
+                                        matrix[row][column] < matrix[row][column - 1] &
+                                        matrix[row][column] < matrix[row - 1][column] &
+                                        matrix[row][column] < matrix[row + 1][column]) {
+                                    return counter;
+                                }
+                            }
+                        }
+                        //end of the row
+                        if (column == matrix[row].length - 1) {
+                            if (matrix[row][column] < matrix[row][column - 1] &
+                                    matrix[row][column] < matrix[row - 1][column] &
+                                    matrix[row][column] < matrix[row + 1][column]) {
+                                return counter;
+                            }
+                        }
+                    }
+                } else {
+                    return lastRowCase(row,counter,0);//1 for local max mode
+                }
+            }
+        }
+        counter++; // next element
+        return -1;
+    }
+
+    /**
+     * Transposes matrix.
+     * <p>
      * Transposes only square and rectangular matrix.
      * Deprecated to use on two-dimensional arrays with variable length rows.
      * If this method will be used on two-dimensional arrays with variable length rows, matrix will be translated to
@@ -227,9 +522,9 @@ public class Matrix {
      * 4 6
      * 4 6 7
      * 8 9 10 11
-     *
+     * <p>
      * Will be:
-     *
+     * <p>
      * 4 4 4 4 8
      * 2 0 6 6 9
      * 0 0 0 7 10
@@ -248,20 +543,20 @@ public class Matrix {
                     matrix[row][column] = matrix[row][column] - matrix[column][row];
                 }
             }
-        } else{
+        } else {
             // if matrix not square, we need to make it square and swap elements.
             // if amount of rows, bigger than amount of columns, it means, that transposed matrix will have
             // amount of rows, that equals old amount of columns and vice versa
-            if (matrix.length>matrix[0].length) {
-                int oldBiggestColumns=biggestRowLength();
+            if (matrix.length > matrix[0].length) {
+                int oldBiggestColumns = biggestRowLength();
                 changeColumns(matrix.length);
                 transpose();
                 changeRows(oldBiggestColumns);
-            }else{
+            } else {
                 //otherwise, amount of columns will be equals to the old amount of rows and vice versa
-                int oldRows=matrix.length;
+                int oldRows = matrix.length;
                 changeRows(biggestRowLength());
-                if (isVariableLength()){
+                if (isVariableLength()) {
                     changeColumns(biggestRowLength());
                 }
                 transpose();
@@ -270,144 +565,153 @@ public class Matrix {
         }
     }
 
-    /**Checking matrix on rows with variable length.
-     *
+    /**
+     * Checking matrix on rows with variable length.
+     * <p>
      * This method checks the matrix is there any rows with different length.
      * Returns true if such rows are exists, false otherwise.
-     *
+     * <p>
      * FORBIDDEN to use outside of transpose() algorithm. This method is a part of it.
      *
-     * @see Matrix#transpose()
-     * @deprecated  - part of only one algorithm
      * @return true if matrix does have rows with different length, false otherwise
+     * @see Matrix#transpose()
+     * @deprecated - part of only one algorithm
      */
-    private boolean isVariableLength(){
-        for (int index=0; index<matrix.length; index++){
-            if(matrix[index].length!=matrix[0].length){
+    private boolean isVariableLength() {
+        for (int index = 0; index < matrix.length; index++) {
+            if (matrix[index].length != matrix[0].length) {
                 return true;
             }
         }
         return false;
     }
 
-    /**Find biggest length of row in matrix.
-     *
+    /**
+     * Find biggest length of row in matrix.
+     * <p>
      * This method is find the longest row in the matrix and returns it length.
      * FORBIDDEN to use outside of {@code transpose()} algorithm. This method is a part of it.
      *
-     * @deprecated - part of only one algorithm
      * @return (int) length of the biggest row
+     * @deprecated - part of only one algorithm
      */
-    private int biggestRowLength(){
-        int biggestLength=0;
-        for (double[] row :matrix){
-            if (row.length>biggestLength){
-                biggestLength=row.length;
+    private int biggestRowLength() {
+        int biggestLength = 0;
+        for (double[] row : matrix) {
+            if (row.length > biggestLength) {
+                biggestLength = row.length;
             }
         }
         return biggestLength;
     }
 
-    /**Settings new length to all matrix rows.
-     *
+    /**
+     * Settings new length to all matrix rows.
+     * <p>
      * This method is setting new row length for each row.
-     *
+     * <p>
      * FORBIDDEN to use outside of {@code transpose()} algorithm. This method is a part of it.
      *
+     * @param newColumns - new rows length
      * @see Matrix#transpose()
      * @deprecated - part of only one algorithm
-     * @param newColumns - new rows length
-     *
      */
-    private void changeColumns(int newColumns){
-        for (int row=0; row<matrix.length; row++){
-                matrix[row]=Arrays.copyOf(matrix[row], newColumns);
+    private void changeColumns(int newColumns) {
+        for (int row = 0; row < matrix.length; row++) {
+            matrix[row] = Arrays.copyOf(matrix[row], newColumns);
         }
-}
+    }
 
-    /**Settings new amount of rows to the matrix.
-     *
+    /**
+     * Settings new amount of rows to the matrix.
+     * <p>
      * This method is settings new amount of rows to the current matrix.
      * If new amount of rows is bigger, than old, all new rows will be initialized with 0 (default) elements.
      * Otherwise unnecessary rows will be deleted.
-     *
+     * <p>
      * FORBIDDEN to use outside of {@code transpose()} algorithm. This method is a part of it.
      *
+     * @param newRows - new amount of rows
      * @see Matrix#transpose()
      * @deprecated - part of only one algorithm
-     * @param newRows - new amount of rows
      */
-    private void changeRows(int newRows){
-        int matrixOldSize=matrix.length;
-        matrix=Arrays.copyOf(matrix, newRows);
-        if (newRows>matrixOldSize) {
+    private void changeRows(int newRows) {
+        int matrixOldSize = matrix.length;
+        matrix = Arrays.copyOf(matrix, newRows);
+        if (newRows > matrixOldSize) {
             for (int index = matrixOldSize; index < matrix.length; index++) {
                 matrix[index] = new double[matrix[matrixOldSize - 1].length];
             }
         }
 
-}
-    /**Prints to console current matrix.
-     *
+    }
+
+    /**
+     * Prints to console current matrix.
      */
-    public void toConsole(){
-        System.out.println("Matrix with "+countElements()+" elements:");
+    public void toConsole() {
+        System.out.println("Matrix with " + countElements() + " elements:");
         for (int row = 0; row < matrix.length; row++) {
             for (int columns = 0; columns < matrix[row].length; columns++) {
-                System.out.print(matrix[row][columns]+" ");
+                System.out.print(matrix[row][columns] + " ");
             }
             System.out.println();
         }
     }
 
-    /**Is matrix square validation.
-     *
+    /**
+     * Is matrix square validation.
+     * <p>
      * Returns true if current matrix is square. False otherwise.
      *
      * @return true if matrix is square, false otherwise
      */
-    public boolean isSquare(){
-        for (int index=0; index<matrix.length; index++){
-            if (matrix.length!=matrix[index].length){
+    public boolean isSquare() {
+        for (int index = 0; index < matrix.length; index++) {
+            if (matrix.length != matrix[index].length) {
                 return false;
             }
         }
         return true;
     }
 
-    /**Is matrix square validation.
-     *
+    /**
+     * Is matrix square validation.
+     * <p>
      * This method is much faster than method isSquare(). But it does not check full array.
      * It checks only equality of amount of rows and length of first row.
      * Deprecated to use, if you are not sure, that your array can be only square or rectangular.
      *
-     * @see Matrix#isSquare()
      * @return true if matrix is square, false otherwise
+     * @see Matrix#isSquare()
      */
-    public boolean isSquareFast(){
-        if (matrix.length==matrix[0].length) {
+    public boolean isSquareFast() {
+        if (matrix.length == matrix[0].length) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    /**Returns given matrix as string.
-     *
+
+    /**
+     * Returns given matrix as string.
+     * <p>
      * Returns string row, that contains matrix values.
      * Example of method output:
      * 1 2 3 4
      * 4 3 2 1
      * 5 6 7 8
+     *
      * @param array - massive, that will be showed in String
      * @return String row, that looks like in example.
      */
-    public String print(double[][] array){
-        String twoDimArray="";
+    public String print(double[][] array) {
+        String twoDimArray = "";
         for (int row = 0; row < matrix.length; row++) {
             for (int columns = 0; columns < matrix[row].length; columns++) {
-                twoDimArray+=matrix[row][columns]+" ";
+                twoDimArray += matrix[row][columns] + " ";
             }
-            twoDimArray+="\n";
+            twoDimArray += "\n";
         }
         return twoDimArray;
     }

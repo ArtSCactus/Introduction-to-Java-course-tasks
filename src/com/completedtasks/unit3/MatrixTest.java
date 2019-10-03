@@ -3,6 +3,9 @@ package com.completedtasks.unit3;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class MatrixTest {
 
     @Test
@@ -56,7 +59,7 @@ public class MatrixTest {
                 {4,2,1,9}
         };
         Matrix testObject = new Matrix(matrix);
-        Assert.assertEquals(1, testObject.localMin(),0.0000000001);
+        Assert.assertEquals(6, testObject.localMin(),0.0000000001);
     }
 
     @Test
@@ -65,7 +68,7 @@ public class MatrixTest {
                 {5}
         };
         Matrix testObject = new Matrix(matrix);
-        Assert.assertEquals(5, testObject.localMin(),0.0000000001);
+        Assert.assertEquals(0, testObject.localMin(),0.0000000001);
     }
     @Test
     public void localMin_END_OF_ROW() {
@@ -73,7 +76,7 @@ public class MatrixTest {
                 {7,6}
         };
         Matrix testObject = new Matrix(matrix);
-        Assert.assertEquals(6, testObject.localMin(),0.0000000001);
+        Assert.assertEquals(1, testObject.localMin(),0.0000000001);
     }
     @Test
     public void localMin_BEGINNING_OF_ROW() {
@@ -81,7 +84,7 @@ public class MatrixTest {
                 {6,7}
         };
         Matrix testObject = new Matrix(matrix);
-        Assert.assertEquals(6, testObject.localMin(),0.0000000001);
+        Assert.assertEquals(0, testObject.localMin(),0.0000000001);
     }
     @Test
     public void localMinEqualElements() {
@@ -96,11 +99,12 @@ public class MatrixTest {
     @Test
     public void localMax() {
         double[][] matrix = new double[][]{
-                {5,5,9,5},
-                {5,5,10,5}
+                {5,5,5,5},
+                {9,5,5,5},
+                {5,5,5,5}
         };
         Matrix testObject = new Matrix(matrix);
-        Assert.assertEquals(9,testObject.localMax(),0.0000000001);
+        Assert.assertEquals(4,testObject.localMax(),0.0000000001);
     }
 
     @Test
@@ -109,7 +113,7 @@ public class MatrixTest {
                 {9}
         };
         Matrix testObject = new Matrix(matrix);
-        Assert.assertEquals(9,testObject.localMax(),0.0000000001);
+        Assert.assertEquals(0,testObject.localMax(),0.0000000001);
     }
 
     @Test
@@ -118,7 +122,7 @@ public class MatrixTest {
                 {9,10}
         };
         Matrix testObject = new Matrix(matrix);
-        Assert.assertEquals(10,testObject.localMax(),0.0000000001);
+        Assert.assertEquals(1,testObject.localMax(),0.0000000001);
     }
 
     @Test
@@ -127,7 +131,7 @@ public class MatrixTest {
                 {10,9}
         };
         Matrix testObject = new Matrix(matrix);
-        Assert.assertEquals(10,testObject.localMax(),0.0000000001);
+        Assert.assertEquals(0,testObject.localMax(),0.0000000001);
     }
 
     @Test
