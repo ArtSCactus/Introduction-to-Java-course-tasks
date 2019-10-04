@@ -14,7 +14,7 @@ import java.util.Arrays;
  * This class in aimed to work with double matrix. Each matrix is class object.
  *
  * @author ArtSCactus
- * @version 0.4
+ * @version 0.5
  */
 public class Matrix {
 
@@ -87,12 +87,14 @@ public class Matrix {
     }
 
     /**
-     * Generates matrix from random number.
+     * Randomly fills current matrix 
+     *
+     * Gives each element random value, that min < element value < max.
      *
      * @param min - minimal value
      * @param max - maximal value
      */
-    public void generate(int min, int max) {
+    public void generate(double min, double max) {
         for (int rowIndex = 0; rowIndex < matrix.length; rowIndex++) {
             for (int columnIndex = 0; columnIndex < matrix[rowIndex].length; columnIndex++) {
                 matrix[rowIndex][columnIndex] = (double) (Math.random() * max) + min;
@@ -529,7 +531,7 @@ public class Matrix {
      * 2 0 6 6 9
      * 0 0 0 7 10
      * 0 0 0 0 11
-     * This method can recursively can itself, but only 1 time (to make matrix square type and repeat).
+     * This method can recursively call itself, but only 1 time (to make matrix square type and repeat).
      *
      * @version 1.2
      */
