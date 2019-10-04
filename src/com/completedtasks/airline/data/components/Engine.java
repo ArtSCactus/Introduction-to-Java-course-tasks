@@ -2,9 +2,9 @@ package com.completedtasks.airline.data.components;
 
 public enum Engine {
 
-    PWJT8D("Pratt & Whitney ", "JT8D", 0.744),
-    PWJT9D("Pratt & Whitney ", "JT9D", 0.646),
-    GEGE90("General Electric", "GE90",0.49 );
+    PW_JT8D("Pratt & Whitney ", "JT8D", 0.744),
+    PW_JT9D("Pratt & Whitney ", "JT9D", 0.646),
+    GE_GE90("General Electric", "GE90",0.49 );
     private String model;
     private String manufacturer;
     private double fuelConsumption;

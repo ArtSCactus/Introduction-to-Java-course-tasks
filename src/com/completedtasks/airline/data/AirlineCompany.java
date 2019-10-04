@@ -1,7 +1,8 @@
 package com.completedtasks.airline.data;
 
 
-import com.completedtasks.airline.data.planemodels.Plane;
+import com.completedtasks.airline.data.comparators.CompareType;
+import com.completedtasks.airline.data.planes.Plane;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +40,29 @@ public class AirlineCompany {
         }
     }
 
+    public int amountOfPlanes(){
+        return planesList.size();
+    }
+
+    public Plane getPlane(int index){
+        return planesList.get(index);
+    }
+
+    public Plane getPlane(String modelName){
+        for (Plane plane : planesList){
+            if (plane.getModelName().equals(modelName)){
+                return plane;
+            }
+        }
+        return null;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void sortPlanes(CompareType sortMode){
+        planesList.sort(sortMode);
     }
 
 }
