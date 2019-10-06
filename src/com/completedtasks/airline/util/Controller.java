@@ -74,6 +74,10 @@ public class Controller {
         return company.getName();
     }
 
+    /**Returns company's planes list.
+     *
+     * @return {@code List<plane>}
+     */
     public List<Plane> getPlanesList() {
         return company.getPlanesList();
     }
@@ -82,6 +86,13 @@ public class Controller {
         return company.getPlane(index);
     }
 
+    /**Returns plane by model name.
+     *
+     * Returns first met plane with given model name.
+     *
+     * @param modelName - (String) model name
+     * @return Plane obj
+     */
     public Plane getPlane(String modelName) {
         if (modelName == null) {
             throw new NullPointerException("Model name cannot be null");
@@ -130,10 +141,28 @@ public class Controller {
         return totalCapacity;
     }
 
+    /**Adds already existing Plane object.
+     *
+     * @param plane
+     * @throws NullPointerException if plane are null
+     */
     public void addPlane(Plane plane) {
+        if (plane==null){
+            throw new NullPointerException("Plane cannot be null.");
+        }
         company.addPlane(plane);
     }
 
+    /**Constructs and adds new plane to company's planes list.
+     *
+     * @param planeType         1 - for PassengerPlane object, 2 - for CargoPlane object
+     * @param serialNumber      - (int) plane serial number
+     * @param modelName         - (String) model name
+     * @param crew              - amount of crew members
+     * @param cargoCapacity     - total capacity for cargo
+     * @param passengerCapacity - total capacity for passengers
+     * @param engineModel       - Engine(enum class) object
+     */
     public void addPlane(int planeType, int serialNumber, String modelName, int crew, int cargoCapacity,
                          int passengerCapacity, Engine engineModel) {
 

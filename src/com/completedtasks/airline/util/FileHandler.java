@@ -9,8 +9,19 @@ import com.completedtasks.airline.entity.planes.Plane;
 import java.io.*;
 import java.util.Scanner;
 
+/**A class, that carries out I/O to/from file.
+ *
+ */
 public class FileHandler {
 
+    /**Parses given row and returns Plane object.
+     *
+     * Reading the row and parsing from it parameters for new plane.
+     * Then constructs it and returns.
+     *
+     * @param row
+     * @return
+     */
     public static Plane parsePlane(String row) {
         String[] parameters = row.split("\\|");
         switch (parameters[0]) {
@@ -67,6 +78,16 @@ public class FileHandler {
         }
     }
 
+    /**Writes given information about company and it's planes list to the file.
+     *
+     * In the first row will be placed name of the company.
+     * All lines below will be the result of method {@code toString} from class PassengerPlane/CargoPlane.
+     *
+     * @see PassengerPlane#toString() PassengerPlane toString method.
+     * @see CargoPlane#toString() CargoPlane toString method.
+     * @param company AirlineCompany obj.
+     * @param filePath - path to file. If it not exists, it will be created.
+     */
     public static void writeCompany(AirlineCompany company, String filePath) {
         File textFile = new File(filePath);
         if (!textFile.exists()) {
@@ -88,6 +109,14 @@ public class FileHandler {
         }
     }
 
+    /**Reads file and creates AirlineCompany obj.
+     *
+     * Reads first row of file and installing it as name of the company.
+     * Then reads all lines below and parsing from it planes.
+     *
+     * @param filePath - path to the file.
+     * @return AirlineCompany obj.
+     */
     public static AirlineCompany parseFile(String filePath){
         AirlineCompany company;
         try{

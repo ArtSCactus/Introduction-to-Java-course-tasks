@@ -6,18 +6,35 @@ import com.completedtasks.airline.entity.components.Engine;
 import java.util.Objects;
 
 public class PassengerPlane extends Plane {
-
+    /**Passengers capacity.
+     *
+     */
     private int passengerCapacity;
+    /**Cargo capacity.
+     *
+     */
     private int cargoCapacity;
+    /**Engine model.
+     *
+     * @see Engine available engine models.
+     */
     private Engine engineModel;
-
+    /**Constructs passenger plane.
+     *
+     * @param serialNumber - plane's serial number. Cannot be < 0.
+     * @param modelName - name of plane model. Cannot be null.
+     * @param crew - amount of crew members. Cannot be <= 0.
+     * @param cargoCapacity - cargo capacity. Cannot be < 0.
+     * @param passengerCapacity - passenger capacity. Cannot be < 0.
+     * @param engineModel - engine model. Cannot be null.
+     * @see Engine available engine types.
+     */
     public PassengerPlane(int serialNumber, String modelName, int crew, int cargoCapacity, int passengerCapacity, Engine engineModel) {
         super(modelName, serialNumber, crew);
         this.cargoCapacity = cargoCapacity;
         this.passengerCapacity = passengerCapacity;
         this.engineModel = engineModel;
     }
-
 
     public double getFuelConsumption() {
         return engineModel.getFuelConsumption();
