@@ -34,7 +34,7 @@ public class UnitOneTaskThree {
         while (interiorRadius > externalRadius) {
             interiorRadius = input.nextDouble();
             externalRadius = input.nextDouble();
-            if (interiorRadius>externalRadius) System.out.println("Invalid entity. Interior radius MUST be less or equals external.");
+            if (interiorRadius>externalRadius) System.out.println("Invalid data. Interior radius MUST be less or equals external.");
         }
 
         System.out.println("The ring square is " + UnitOneTaskThree.findSquare(interiorRadius, externalRadius));

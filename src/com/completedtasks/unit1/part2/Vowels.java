@@ -118,9 +118,9 @@ public class Vowels {
         Scanner input = new Scanner(System.in);
         System.out.print("Please, enter the letter(you can enter row, but than will be taken only the first symbol): ");
         char letter = input.next().toLowerCase().charAt(0);
-        //Validation is given entity are correct (a letter)
+        //Validation is given data are correct (a letter)
         while (!Character.isLetter(letter)) {
-            System.out.println("Wrong entity. Symbol must be a letter. Try again: ");
+            System.out.println("Wrong data. Symbol must be a letter. Try again: ");
             letter = input.next().toLowerCase().charAt(0);
         }
         //Result output

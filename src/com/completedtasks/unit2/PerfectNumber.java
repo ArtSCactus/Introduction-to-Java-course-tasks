@@ -77,7 +77,7 @@ public class PerfectNumber {
         int number = input.nextInt();
 
         while (number < 1) {
-            System.out.println("Wrong entity. Entered number is less than 1. There's no negative perfect number.\nTry again: ");
+            System.out.println("Wrong data. Entered number is less than 1. There's no negative perfect number.\nTry again: ");
             number = input.nextInt();
         }
         return number;

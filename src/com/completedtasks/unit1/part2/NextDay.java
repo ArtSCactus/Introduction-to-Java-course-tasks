@@ -83,7 +83,7 @@ public class NextDay {
         int month = input.nextInt();
         System.out.print("Year: ");
         int year = input.nextInt();
-        //Validation is given entity are correct (a letter)
+        //Validation is given data are correct (a letter)
        System.out.println("Next date: "+findNextDate(day,month,year));
     }
 }

@@ -30,7 +30,7 @@ public class UnitOneTaskSix {
 
         //By task condition number has to be 7-digit
         while (number<1000000 | number>9999999) {
-            System.out.println("Invalid entity. Number must be 7-digit. Try again:");
+            System.out.println("Invalid data. Number must be 7-digit. Try again:");
             number=input.nextInt();
         }
         System.out.println("Result: "+reverse(number));

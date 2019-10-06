@@ -45,7 +45,7 @@ public class UnitOneTaskTwo {
         
         //User input validation. Dinosaur mass cannot be less than 0.
         while (massInKG<0) {
-            System.out.print("Invalid entity. Dinosaur mass cannot be less than 0. Try again: ");
+            System.out.print("Invalid data. Dinosaur mass cannot be less than 0. Try again: ");
             massInKG = input.nextDouble();
         }
         System.out.println("Answer:\nIn tons "+toTons(massInKG)+"\nIn grams: "+toGrams(massInKG)+
