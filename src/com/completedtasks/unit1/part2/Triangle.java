@@ -36,7 +36,7 @@ public class Triangle {
         else return false;
     }
 
-    /**Checks whether the data makes a triangle.
+    /**Checks whether the entity makes a triangle.
      *
      * @param sideAB - first side of current triangle
      * @param sideBC - second side of current triangle

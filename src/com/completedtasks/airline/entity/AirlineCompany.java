@@ -1,11 +1,13 @@
-package com.completedtasks.airline.data;
+package com.completedtasks.airline.entity;
 
 
-import com.completedtasks.airline.data.comparators.CompareType;
-import com.completedtasks.airline.data.planes.Plane;
+import com.completedtasks.airline.entity.comparators.CompareType;
+import com.completedtasks.airline.entity.planes.Plane;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class AirlineCompany {
 
@@ -40,6 +42,14 @@ public class AirlineCompany {
         }
     }
 
+    public void setPlanesList(List<Plane> planesList){
+        this.planesList=planesList;
+    }
+
+    public List<Plane> getPlanesList(){
+        return planesList;
+    }
+
     public int amountOfPlanes(){
         return planesList.size();
     }
@@ -57,6 +67,10 @@ public class AirlineCompany {
         return null;
     }
 
+    public String getName(){
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -65,4 +79,32 @@ public class AirlineCompany {
         planesList.sort(sortMode);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AirlineCompany)) return false;
+        AirlineCompany that = (AirlineCompany) o;
+        return getName().equals(that.getName()) &&
+                getPlanesList().equals(that.getPlanesList());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getPlanesList());
+    }
+
+    private String toStringPlanes(){
+        String planesRow="";
+        for (Plane plane : planesList){
+            planesRow+=plane.toString()+"\n";
+        }
+        return planesRow;
+    }
+
+    @Override
+    public String toString() {
+        return "AirlineCompany: " +
+                "name = " + name  +
+                " planes list:\n" + toStringPlanes();
+    }
 }

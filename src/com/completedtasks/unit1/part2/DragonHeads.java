@@ -25,7 +25,7 @@ public class DragonHeads {
         int age=input.nextInt();
         //By task condition number has to be 7-digit
         while (age<=0) {
-            System.out.println("Invalid data. Age must be bigger than 0. Try again:");
+            System.out.println("Invalid entity. Age must be bigger than 0. Try again:");
             age=input.nextInt();
         }
         int heads=countHeads(age);

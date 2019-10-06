@@ -57,7 +57,7 @@ public class UnitOneTaskFour {
 
         //Input validation. By task condition number has to be 4-digit
         while (number<1000 | number>9999) {
-            System.out.println("Invalid data. Number must be four-digit. Try again:");
+            System.out.println("Invalid entity. Number must be four-digit. Try again:");
             number=input.nextInt();
         }
         int[] numerals=toNumerals(number);

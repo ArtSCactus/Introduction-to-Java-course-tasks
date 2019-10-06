@@ -1,6 +1,6 @@
-package com.completedtasks.airline.data.comparators;
+package com.completedtasks.airline.entity.comparators;
 
-import com.completedtasks.airline.data.planes.Plane;
+import com.completedtasks.airline.entity.planes.Plane;
 
 import java.util.Comparator;
 
@@ -55,6 +55,23 @@ public enum CompareType implements Comparator<Plane> {
         @Override
         public int compare (Plane ob1, Plane ob2) {
            return (ob1.getModelName().compareTo(ob2.getModelName()));
+        }
+    },
+
+    BY_SERIAL_NUM_AND_MODEL(){
+        @Override
+        public int compare (Plane ob1, Plane ob2){
+            if (ob1.getSerialNumber() == ob2.getSerialNumber() &
+                    ob1.getModelName().compareTo(ob2.getModelName())==0) {
+                return 0;
+            }
+            if (ob1.getSerialNumber() > ob2.getSerialNumber()&
+                    ob1.getModelName().compareTo(ob2.getModelName())>0) {
+                return 1;
+            }
+            else {
+                return -1;
+            }
         }
     }
 

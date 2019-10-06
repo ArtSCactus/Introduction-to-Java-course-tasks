@@ -41,7 +41,7 @@ public class UnitOneTaskFive {
 
         //By task condition number has to be 6-digit
         while (number < 100000 | number > 999999) {
-            System.out.println("Invalid data. Number must be 6-digit. Try again:");
+            System.out.println("Invalid entity. Number must be 6-digit. Try again:");
             number=input.nextInt();
         }
         int[] numerals= UnitOneTaskFour.toNumerals(number);

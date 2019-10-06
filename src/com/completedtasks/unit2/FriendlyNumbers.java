@@ -159,7 +159,7 @@ public class FriendlyNumbers {
         end= readNumber();
         //Data validation
         if (end<start) {
-            System.out.println("Invalid data. End cannot be less than start.");
+            System.out.println("Invalid entity. End cannot be less than start.");
             return;
         }
             System.out.println("Founded pairs:");
