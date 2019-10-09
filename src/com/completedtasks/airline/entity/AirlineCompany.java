@@ -5,7 +5,6 @@ import com.completedtasks.airline.entity.comparators.CompareType;
 import com.completedtasks.airline.entity.planes.Plane;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 

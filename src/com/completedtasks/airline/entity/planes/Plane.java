@@ -1,6 +1,8 @@
 package com.completedtasks.airline.entity.planes;
 
 
+import com.completedtasks.airline.entity.components.Engine;
+
 public abstract class Plane {
     /**Serial number for current plane.
      *
@@ -25,6 +27,35 @@ public abstract class Plane {
         this.modelName = modelName;
         this.SERIAL_NUMBER = serialNumber;
         this.crew = crew;
+    }
+
+    /**
+     * Constructs and returns plane.
+     * <p>
+     * Plane factory. Constructs and Returns plane by given parameters.
+     * If (int) plane type would be less than 1 and bigger than 2 will be returned null.
+     *
+     * @param planeType         1 - for PassengerPlane object, 2 - for CargoPlane object
+     * @param serialNumber      - (int) plane serial number
+     * @param modelName         - (String) model name
+     * @param crew              - amount of crew members
+     * @param cargoCapacity     - total capacity for cargo
+     * @param passengerCapacity - total capacity for passengers
+     * @param engineModel       - Engine(enum class) object
+     * @return CargoPlane/PassengerPlane object
+     */
+    public static Plane constructPlane(int planeType, int serialNumber, String modelName, int crew, int cargoCapacity,
+                                       int passengerCapacity, Engine engineModel) {
+        switch (planeType) {
+            case (1):
+                return new PassengerPlane(serialNumber, modelName,
+                        crew, cargoCapacity, passengerCapacity, engineModel);
+            case (2):
+                return new CargoPlane(serialNumber, modelName,
+                        crew, cargoCapacity, passengerCapacity, engineModel);
+            default:
+                return null;
+        }
     }
 
     public String getModelName() {

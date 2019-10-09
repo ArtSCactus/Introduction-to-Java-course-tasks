@@ -1,5 +1,7 @@
 package com.completedtasks.airline.util;
 
+import com.completedtasks.airline.exceptions.FileParsingException;
+import com.completedtasks.airline.exceptions.PlaneParseException;
 import com.completedtasks.airline.entity.AirlineCompany;
 import com.completedtasks.airline.entity.comparators.CompareType;
 import com.completedtasks.airline.entity.components.Engine;
@@ -15,20 +17,12 @@ public class Controller {
      * Main AirlineCompany (planes list) storage.
      */
     private AirlineCompany company;
-    /**
-     * Object to initialize planes list from .txt file.
-     */
-    private FileReader fileInput;
-    /**
-     * Object to save current planes list to the file.
-     */
-    private FileWriter fileOutput;
 
-    Controller(String filePath) {
+    Controller(String filePath) throws FileParsingException {
        FileHandler.parseFile(filePath);
     }
 
-    Controller (String companyName, boolean notFromFile){
+    public Controller(String companyName, boolean notFromFile){
         company= new AirlineCompany(companyName);
     }
 
@@ -166,7 +160,7 @@ public class Controller {
     public void addPlane(int planeType, int serialNumber, String modelName, int crew, int cargoCapacity,
                          int passengerCapacity, Engine engineModel) {
 
-        company.addPlane(FileHandler.constructPlane(planeType, serialNumber, modelName, crew, cargoCapacity,
+        company.addPlane(Plane.constructPlane(planeType, serialNumber, modelName, crew, cargoCapacity,
                 passengerCapacity, engineModel));
     }
 
