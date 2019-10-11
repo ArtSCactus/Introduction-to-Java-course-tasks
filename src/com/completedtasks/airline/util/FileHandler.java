@@ -23,10 +23,10 @@ public class FileHandler {
      * Then constructs it and returns.
      *
      * @param row
-     * @return
+     * @return airline company object
      * @throws PlaneParseException - if
      */
-    public static Plane parsePlane(String row) throws PlaneParseException {
+    public static Plane parseAndConstructPlane(String row) throws PlaneParseException {//поменять название
         String[] parameters = row.split("\\|");
         try {
             switch (parameters[0]) {
@@ -70,14 +70,16 @@ public class FileHandler {
      */
     public static void writeCompany(AirlineCompany company, String filePath) {
         File textFile = new File(filePath);
+        //checking file on existance. If it not exists, it will be created.
         if (!textFile.exists()) {
             try {
                 textFile.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            try {
-                FileWriter fileOutput = new FileWriter(textFile);
+            //Writing company to the file
+            try (FileWriter fileOutput = new FileWriter(textFile)){
+               // FileWriter fileOutput = new FileWriter(textFile);
                 fileOutput.write(company.getName() + "\n");
                 for (Plane plane : company.getPlanesList()) {
                     fileOutput.write(plane.toString() + "\n");
@@ -94,30 +96,73 @@ public class FileHandler {
      * <p>
      * Reads first row of file and installing it as name of the company.
      * Then reads all lines below and parsing rows to Plane objects.
+     * Modified version of {@code parseFileAndConstructCompany} method. If skipBrokenLineMode is true,
+     * the lines, where was met {@code PlaneParseException} will be skipped and information about it will be printed to
+     * log by logger. Otherwise, the method will work as default variant.
+     *
+     * @param filePath - path to the file.
+     * @return AirlineCompany obj.
+     * @see PlaneParseException for more information about PlaneParseException
+     * @throws FileParsingException - if FileNotFoundException, PlaneParseException, IOException, are caught.
+     * In each case will be returned message of caught exceptions.
+     */
+    public static AirlineCompany parseFileAndConstructCompany(String filePath, boolean skipBrokenLineMode) throws FileParsingException {// переимновать
+        AirlineCompany company;
+        try (FileReader fileInput = new FileReader(filePath)){
+            Scanner input = new Scanner(fileInput);
+            company = new AirlineCompany(input.nextLine());
+            while (input.hasNextLine()) {
+                try{
+                company.addPlane(FileHandler.parseAndConstructPlane(input.nextLine()));
+            } catch(PlaneParseException e) {
+                    if (skipBrokenLineMode) {
+                        //logger.info will be here
+                    } else {
+                        throw new FileParsingException("An error occurred while parsing string row as Plane object. Message: " + e.getMessage());
+                    }
+            }
+            }
+            fileInput.close();
+            return company;
+        } catch (FileNotFoundException e) {
+            throw new FileParsingException("No such file by given pass: " + filePath);
+        } catch (IOException e) {
+           throw new FileParsingException("An error with Input/Output stream. Message: "+e.getMessage());
+        }
+    }
+    /**
+     * Reads file and creates AirlineCompany obj.
+     * <p>
+     * Reads first row of file and installing it as name of the company.
+     * Then reads all lines below and parsing rows to Plane objects.
+     * This is a default realization of method{@code parseFileAndConstructCompany()}.
+     * If in the process of file parsing and object constructing will be met any exception, the method will be stopped
+     * and will be thrown FileParsingException with message, that describes the situation.
      *
      * @param filePath - path to the file.
      * @return AirlineCompany obj.
      * @throws FileParsingException - if FileNotFoundException, PlaneParseException, IOException, are caught.
      * In each case will be returned message of caught exceptions.
      */
-    public static AirlineCompany parseFile(String filePath) throws FileParsingException {
+    public static AirlineCompany parseFileAndConstructCompany(String filePath) throws FileParsingException {// переимновать
         AirlineCompany company;
-        try {
-            FileReader fileInput = new FileReader(filePath);
+        try (FileReader fileInput = new FileReader(filePath)){
+            // FileReader fileInput = new FileReader(filePath);
             Scanner input = new Scanner(fileInput);
             company = new AirlineCompany(input.nextLine());
             while (input.hasNextLine()) {
-                company.addPlane(FileHandler.parsePlane(input.nextLine()));
-            }
+                try{
+                    company.addPlane(FileHandler.parseAndConstructPlane(input.nextLine()));
+                } catch(PlaneParseException e) {
+                        throw new FileParsingException("An error occurred while parsing string row as Plane object. Message: " + e.getMessage());
+                    }
+                }
             fileInput.close();
             return company;
         } catch (FileNotFoundException e) {
-           throw new FileParsingException("No such file by given pass: "+filePath);
-        } catch(PlaneParseException e) {
-            throw new FileParsingException("An error occurred while parsing string row as Plane object. Message: "+e.getMessage());
-        }catch (IOException e) {
-           throw new FileParsingException("An error with Input/Output stream. Message: "+e.getMessage());
+            throw new FileParsingException("No such file by given pass: " + filePath);
+        } catch (IOException e) {
+            throw new FileParsingException("An error with Input/Output stream. Message: "+e.getMessage());
         }
     }
-
 }

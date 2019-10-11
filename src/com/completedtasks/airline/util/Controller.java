@@ -1,14 +1,11 @@
 package com.completedtasks.airline.util;
 
 import com.completedtasks.airline.exceptions.FileParsingException;
-import com.completedtasks.airline.exceptions.PlaneParseException;
 import com.completedtasks.airline.entity.AirlineCompany;
 import com.completedtasks.airline.entity.comparators.CompareType;
 import com.completedtasks.airline.entity.components.Engine;
 import com.completedtasks.airline.entity.planes.Plane;
 
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -19,7 +16,7 @@ public class Controller {
     private AirlineCompany company;
 
     Controller(String filePath) throws FileParsingException {
-       FileHandler.parseFile(filePath);
+       FileHandler.parseFileAndConstructCompany(filePath);
     }
 
     public Controller(String companyName, boolean notFromFile){
@@ -32,7 +29,8 @@ public class Controller {
      * Name of the company will be installed as "Unnamed company".
      * List of planes will be installed as empty, but not null.
      */
-    Controller() {
+    Controller()
+    {
         company = new AirlineCompany("Unnamed company");
     }
 
@@ -182,6 +180,10 @@ public class Controller {
             }
         }
         throw new NoSuchElementException("No such plane found");
+    }
+
+    public Plane getPlaneByModelName(String modelName){
+      return company.getPlane(modelName);
     }
 
     /**
