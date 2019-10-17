@@ -21,6 +21,8 @@
       <list>
         <option value="Arquillian JUnit Test Class" />
         <option value="JUnit4 Test Class" />
+        <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -40,9 +42,10 @@
   <component name="ProjectId" id="1RQWQ1GXogJ49yIdoSJIzWyvfEm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Downloaded.Files.Path" value="D:\Projects\logger" />
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -51,11 +54,11 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../apache-log4j-2.12.1-bin/log4j-core-2.12.1.jar!/" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
@@ -72,6 +75,11 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\Introduction-to-Java-course-tasks\src" />
+      <recent name="D:\Projects\Introduction-to-Java-course-tasks" />
+      <recent name="D:\Projects\Introduction-to-Java-course-tasks\src\resources" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -85,13 +93,12 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ControllerTest.isFileParsingBeenStopped">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.completedtasks.Main" />
-      <module name="Introducing-to-Java" />
+  <component name="RunManager" selected="JUnit.ControllerTest.totalPassengerCapacity">
+    <configuration name="Version" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.apache.logging.log4j.core.Version" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.completedtasks.*" />
+          <option name="PATTERN" value="org.apache.logging.log4j.core.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -134,7 +141,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ControllerTest.parseFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ControllerTest.totalPassengerCapacity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Introducing-to-Java" />
       <extension name="coverage">
         <pattern>
@@ -144,7 +151,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.completedtasks.airline.test" />
       <option name="MAIN_CLASS_NAME" value="com.completedtasks.airline.test.ControllerTest" />
-      <option name="METHOD_NAME" value="parseFile" />
+      <option name="METHOD_NAME" value="totalPassengerCapacity" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
@@ -223,19 +230,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Version" />
       <item itemvalue="JUnit.ControllerTest" />
-      <item itemvalue="JUnit.ControllerTest.parseFile" />
       <item itemvalue="JUnit.ControllerTest.writeAndParseCompany" />
       <item itemvalue="JUnit.ControllerTest.isFileParsingBeenStopped" />
+      <item itemvalue="JUnit.ControllerTest.totalPassengerCapacity" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ControllerTest.totalPassengerCapacity" />
+        <item itemvalue="JUnit.ControllerTest" />
+        <item itemvalue="Application.Version" />
         <item itemvalue="JUnit.ControllerTest.isFileParsingBeenStopped" />
         <item itemvalue="JUnit.ControllerTest.writeAndParseCompany" />
-        <item itemvalue="JUnit.ControllerTest" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.ControllerTest.parseFile" />
       </list>
     </recent_temporary>
   </component>

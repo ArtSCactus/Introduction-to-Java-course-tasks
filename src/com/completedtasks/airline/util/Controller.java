@@ -6,6 +6,7 @@ import com.completedtasks.airline.entity.comparators.CompareType;
 import com.completedtasks.airline.entity.components.Engine;
 import com.completedtasks.airline.entity.planes.Plane;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -91,6 +92,7 @@ public class Controller {
         }
         return company.getPlane(modelName);
     }
+
 
     /**
      * Appropriation new empty object of AirlineCompany.
@@ -209,5 +211,26 @@ public class Controller {
         company.sortPlanes(CompareType.BY_SERIAL_NUMBER);
     }
 
+    /**Returns list of engines from Engine enum.
+     *
+     * Calls method {@code Arrays.asList(Engine.values())}
+     *
+     * @return {@code List<Engine>}
+     */
+    public List<Engine> getEnginesList(){
+        return Arrays.asList(Engine.values());
+    }
+
+    /**Setter for company name.
+     *
+     * @param name - new company name.
+     * @exception NullPointerException if name is null
+     */
+    public void setCompanyName(String name){
+        if (name==null){
+            throw new NullPointerException("Company name cannot be null");
+        }
+        company.setName(name);
+    }
 
 }

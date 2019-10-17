@@ -8,6 +8,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="junit:junit:4.12" level="project" />
-    <orderEntry type="library" name="Maven: Arquillian JUnit:Release" level="project" />
+    <orderEntry type="library" name="log4j-api-2.12.1" level="project" />
+    <orderEntry type="library" name="log4j-core-2.12.1" level="project" />
   </component>
 </module>
