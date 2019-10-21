@@ -7,6 +7,8 @@ import com.completedtasks.airline.entity.components.Engine;
 import com.completedtasks.airline.entity.planes.CargoPlane;
 import com.completedtasks.airline.entity.planes.PassengerPlane;
 import com.completedtasks.airline.entity.planes.Plane;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.util.Scanner;
@@ -15,7 +17,7 @@ import java.util.Scanner;
  * A class, that carries out I/O to/from file.
  */
 public class FileHandler {
-
+    private static final Logger LOGGER = LogManager.getLogger(FileHandler.class);
     /**
      * Parses given row and returns Plane object.
      * <p>
@@ -49,9 +51,11 @@ public class FileHandler {
                     return new CargoPlane(serialNumber, modelName, crew, cargoCapacity, passengerCapacity, engine);
 
                 default:
+                    LOGGER.error("Failed to convert plane type");
                     throw new PlaneParseException("Unknown plane type before the first | symbol");
             }
         } catch (NumberFormatException e) {
+            LOGGER.error("Failed to convert row to Plane object");
             throw new PlaneParseException("Cannot convert String to Integer");
         }
     }
@@ -79,12 +83,10 @@ public class FileHandler {
             }
             //Writing company to the file
             try (FileWriter fileOutput = new FileWriter(textFile)){
-               // FileWriter fileOutput = new FileWriter(textFile);
                 fileOutput.write(company.getName() + "\n");
                 for (Plane plane : company.getPlanesList()) {
                     fileOutput.write(plane.toString() + "\n");
                 }
-                fileOutput.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -111,13 +113,18 @@ public class FileHandler {
         try (FileReader fileInput = new FileReader(filePath)){
             Scanner input = new Scanner(fileInput);
             company = new AirlineCompany(input.nextLine());
+            String currentLine;
             while (input.hasNextLine()) {
+                currentLine=input.nextLine();
                 try{
-                company.addPlane(FileHandler.parseAndConstructPlane(input.nextLine()));
+                company.addPlane(FileHandler.parseAndConstructPlane(currentLine));
             } catch(PlaneParseException e) {
                     if (skipBrokenLineMode) {
-                        //logger.info will be here
+                        LOGGER.info("Skipped broken line");
+                        LOGGER.debug("A broken line was skipped. Variables status: {currentLine=\""+currentLine
+                                +"\", skipBrokenLinMode=\""+skipBrokenLineMode+"\"}");
                     } else {
+                        LOGGER.error("");
                         throw new FileParsingException("An error occurred while parsing string row as Plane object. Message: " + e.getMessage());
                     }
             }
@@ -125,8 +132,12 @@ public class FileHandler {
             fileInput.close();
             return company;
         } catch (FileNotFoundException e) {
+            LOGGER.debug("No file found. Given file path:  "+filePath);
+            LOGGER.error("No file found by given pass.");
             throw new FileParsingException("No such file by given pass: " + filePath);
         } catch (IOException e) {
+            LOGGER.debug("Caught IOException: "+e.getMessage());
+            LOGGER.error("Caught IOException.");
            throw new FileParsingException("An error with Input/Output stream. Message: "+e.getMessage());
         }
     }
@@ -147,21 +158,28 @@ public class FileHandler {
     public static AirlineCompany parseFileAndConstructCompany(String filePath) throws FileParsingException {// переимновать
         AirlineCompany company;
         try (FileReader fileInput = new FileReader(filePath)){
-            // FileReader fileInput = new FileReader(filePath);
             Scanner input = new Scanner(fileInput);
             company = new AirlineCompany(input.nextLine());
+            String currentLine;
             while (input.hasNextLine()) {
+                currentLine=input.nextLine();
                 try{
-                    company.addPlane(FileHandler.parseAndConstructPlane(input.nextLine()));
+                    company.addPlane(FileHandler.parseAndConstructPlane(currentLine));
                 } catch(PlaneParseException e) {
+                    LOGGER.debug("Failed to convert row to Plane object. Current line: "+currentLine);
+                    LOGGER.error("Failed to convert row to Plane object.");
                         throw new FileParsingException("An error occurred while parsing string row as Plane object. Message: " + e.getMessage());
                     }
                 }
             fileInput.close();
             return company;
         } catch (FileNotFoundException e) {
+            LOGGER.debug("No file found. Given file path:  "+filePath);
+            LOGGER.error("No file found by given pass.");
             throw new FileParsingException("No such file by given pass: " + filePath);
         } catch (IOException e) {
+            LOGGER.debug("Caught IOException: "+e.getMessage());
+            LOGGER.error("Caught IOException.");
             throw new FileParsingException("An error with Input/Output stream. Message: "+e.getMessage());
         }
     }

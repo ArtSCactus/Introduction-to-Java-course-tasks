@@ -5,6 +5,8 @@ import com.completedtasks.airline.entity.AirlineCompany;
 import com.completedtasks.airline.entity.comparators.CompareType;
 import com.completedtasks.airline.entity.components.Engine;
 import com.completedtasks.airline.entity.planes.Plane;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,9 +17,10 @@ public class Controller {
      * Main AirlineCompany (planes list) storage.
      */
     private AirlineCompany company;
+    private static final Logger LOGGER = LogManager.getLogger(Controller.class);
 
-    Controller(String filePath) throws FileParsingException {
-       FileHandler.parseFileAndConstructCompany(filePath);
+    public Controller(String filePath) throws FileParsingException {
+       company=FileHandler.parseFileAndConstructCompany(filePath);
     }
 
     public Controller(String companyName, boolean notFromFile){
@@ -101,9 +104,11 @@ public class Controller {
      */
     public void createCompany(String name) {
         if (name == null) {
+            LOGGER.error("Company name is null");
             throw new NullPointerException("Company name cannot be null.");
         }
         if (name.length() == 0) {
+            LOGGER.error("Empty company name");
             throw new IllegalArgumentException("Company name cannot be empty");
         }
         company = new AirlineCompany(name);
@@ -142,6 +147,7 @@ public class Controller {
      */
     public void addPlane(Plane plane) {
         if (plane==null){
+            LOGGER.error("Plane object came with null");
             throw new NullPointerException("Plane cannot be null.");
         }
         company.addPlane(plane);
@@ -159,7 +165,6 @@ public class Controller {
      */
     public void addPlane(int planeType, int serialNumber, String modelName, int crew, int cargoCapacity,
                          int passengerCapacity, Engine engineModel) {
-
         company.addPlane(Plane.constructPlane(planeType, serialNumber, modelName, crew, cargoCapacity,
                 passengerCapacity, engineModel));
     }
@@ -175,12 +180,13 @@ public class Controller {
      * @see AirlineCompany more information about list of planes
      * @see com.completedtasks.airline.entity.components.Engine more information about fuel consumption
      */
-    public Plane getPlaneByFuelConsumption(double fuelConsumption) throws NoSuchElementException {
+    public Plane getPlaneByFuelConsumption(List<Plane> planes, double fuelConsumption) throws NoSuchElementException {
         for (int index = 0; index < company.amountOfPlanes(); index++) {
             if (company.getPlane(index).getFuelConsumption() == fuelConsumption) {
                 return company.getPlane(index);
             }
         }
+        LOGGER.info("No founded plane");
         throw new NoSuchElementException("No such plane found");
     }
 
@@ -188,6 +194,14 @@ public class Controller {
       return company.getPlane(modelName);
     }
 
+    public void toFile(String filePath){
+        if (filePath==null){
+            LOGGER.debug("Given file path: "+filePath);
+            LOGGER.error("File path came with null");
+            throw new NullPointerException("File path cannot be null");
+        }
+        FileHandler.writeCompany(company,filePath);
+    }
     /**
      * Sorts planes list.
      * <p>
@@ -228,6 +242,7 @@ public class Controller {
      */
     public void setCompanyName(String name){
         if (name==null){
+            LOGGER.error("Company name is null");
             throw new NullPointerException("Company name cannot be null");
         }
         company.setName(name);

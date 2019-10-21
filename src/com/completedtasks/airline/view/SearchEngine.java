@@ -1,11 +1,14 @@
 package com.completedtasks.airline.view;
 
 import com.completedtasks.airline.entity.planes.Plane;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
+//TODO decide, maybe just do all searches in one method, but with Enum type parameters?
 
 public class SearchEngine {
-    //TODO decide, maybe just do all searches in one method, but with Enum type parameters?
+    private static final Logger LOGGER = LogManager.getLogger(SearchEngine.class);
     /**
      * Print all planes in airline company to console.
      * <p>
@@ -17,13 +20,15 @@ public class SearchEngine {
             return;
         }
         for (Plane plane : planes) {
-            System.out.println("Plane: " + plane.getModelName() +
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                    "Plane: " + plane.getModelName() +
                     "\nSerial number: " + plane.getSerialNumber() +
                     "\nModel name: " + plane.getModelName() +
                     "\nFuel consumption: " + plane.getFuelConsumption() +
                     "\nCrew: " + plane.getCrew() +
                     "\nPassenger capacity: " + plane.getPassengerCapacity()
-                    + "\nCargo capacity: " + plane.getCargoCapacity());
+                    + "\nCargo capacity: " + plane.getCargoCapacity()+
+                    "\n~~~~~~~~~~~~~~~~~~~~~~~~");
         }
     }
     /**Prints information about given plane to console.
@@ -31,13 +36,15 @@ public class SearchEngine {
      * @param plane plane, that will be printed to console.
      */
     public static void printPlane(Plane plane) {
-        System.out.println("Plane: " + plane.getModelName() +
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                "Plane: " + plane.getModelName() +
                 "\nSerial number: " + plane.getSerialNumber() +
                 "\nModel name: " + plane.getModelName() +
                 "\nFuel consumption: " + plane.getFuelConsumption() +
                 "\nCrew: " + plane.getCrew() +
                 "\nPassenger capacity: " + plane.getPassengerCapacity()
-                + "\nCargo capacity: " + plane.getCargoCapacity());
+                + "\nCargo capacity: " + plane.getCargoCapacity()+
+                "\n~~~~~~~~~~~~~~~~~~~~~~~~");
 
     }
 
@@ -63,10 +70,17 @@ public class SearchEngine {
      * @param max maximal value of serial number
      */
     public static void printPlanesBySerialNumber(List<Plane> planes,int min, int max){
+        if (min<0 || max<0){
+            LOGGER.debug("Min: "+min+" Max: "+max);
+            LOGGER.error("Min or max (or both) came as <0 ");
+            throw new IllegalArgumentException("Minimal or maximal serial number cannot be less than 0");
+        }
         if (min>max){
             min=min+max;
             max=min-max;
             min=min-max;
+            LOGGER.warn("Min and max variables came as min>max. Variables has been swapped.");
+            LOGGER.debug("min>max. min: "+min+" max: "+max);
         }
         boolean noMatches=true;
         for (Plane plane : planes){
@@ -87,6 +101,8 @@ public class SearchEngine {
      */
     public static void printPlanesByFuelConsumption(List<Plane> planes, double fuelConsumption){
         if (fuelConsumption<0){
+            LOGGER.debug("Fuel consumption is <0: "+fuelConsumption);
+            LOGGER.error("Fuel consumption is less than 0.");
             throw new IllegalArgumentException("Fuel consumption cannot be less than 0");
         }
         boolean noMatches=true;
@@ -109,6 +125,8 @@ public class SearchEngine {
      * */
     public static void printPlanesByFuelConsumption(List<Plane> planes, double min, double max){
         if (min<0 || max<0){
+            LOGGER.debug("Min: "+min+" Max: "+max);
+            LOGGER.error("Min or max (or both) came as <0.");
             throw new IllegalArgumentException("Minimal or maximal fuel consumption cannot be less than 0");
         }
         if (min>max){
@@ -135,6 +153,8 @@ public class SearchEngine {
      * */
     public static void printPlanesByCargoCapacity(List<Plane> planes, int min, int max){
         if (min<0 || max<0){
+            LOGGER.debug("Min: "+min+" Max: "+max);
+            LOGGER.error("Min or max (or both) came as <0 ");
             throw new IllegalArgumentException("Minimal or maximal cargo capacity cannot be less than 0");
         }
         if (min>max){

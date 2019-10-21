@@ -1,0 +1,2 @@
+2019-10-21 18:45:46.198 [main] ERROR com.completedtasks.airline.util.FileHandler - No file found by given pass.
+2019-10-21 18:45:46.204 [main] ERROR com.completedtasks.airline.view.Viewer - No such file by given pass: abc

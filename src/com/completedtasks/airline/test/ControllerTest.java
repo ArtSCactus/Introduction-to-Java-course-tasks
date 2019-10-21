@@ -14,7 +14,9 @@ import org.junit.Test;
 
 import java.io.File;
 import java.util.List;
+import java.util.NoSuchElementException;
 
+//TODO: add tests for new features
 
 public class ControllerTest {
     private Controller control;
@@ -91,7 +93,14 @@ public class ControllerTest {
 
     @Test
     public void getPlaneByFuelConsumption() {
-        Assert.assertEquals(control.getPlane("C-130 HERCULES"), control.getPlaneByFuelConsumption(0.49));
+        Assert.assertEquals(control.getPlane("C-130 HERCULES"),
+                control.getPlaneByFuelConsumption(control.getPlanesList(),0.49));
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void getPlaneByFuelConsumption_EXCEPTION() {
+        Assert.assertEquals(control.getPlane("C-130 HERCULES"),
+                control.getPlaneByFuelConsumption(control.getPlanesList(),0.9999));
     }
 
     @Test

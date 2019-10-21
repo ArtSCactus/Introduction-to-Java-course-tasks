@@ -2,22 +2,30 @@ package com.completedtasks.airline.view;
 
 import com.completedtasks.airline.entity.components.Engine;
 import com.completedtasks.airline.entity.planes.Plane;
+import com.completedtasks.airline.exceptions.FileParsingException;
 import com.completedtasks.airline.util.Controller;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+//TODO: finish/improve logging. Log every user action? or only errors and debug info?
+//TODO: finish viewer: not all features was added to interface.
+//TODO: fix bugs
+//TODO: maybe create GUI?
 /**User interface
  * Realized through console.
  */
 public class Viewer {
-    //TODO Omg, write already this documentation and finish viewer
+    private static final Logger LOGGER = LogManager.getLogger(Viewer.class);
     private Controller controller;
 
     /**
      * Main menu on entrance to application.
      */
-    public void mainMenu() {
+    public void run() {
         System.out.println("Hello, welcome to our airline company." +
                 "\nPlease, select command:" +
                 "\n1-Create company." +
@@ -26,12 +34,40 @@ public class Viewer {
         switch (choice) {
             case (1):
                 createCompany();
+                inCompanyMenu();
+                break;
+            case(2):
+                String inputedRow;
+                while(true) {
+                    System.out.println("Please, enter path to file (type Exit to exit the application):");
+                    inputedRow=inputString();
+                    try {
+                        controller = new Controller(inputedRow);
+                        inCompanyMenu();
+                    } catch (FileParsingException e) {
+                        LOGGER.error(e.getCustomMessage());
+                        if (e.getCustomMessage().equals("No such file by given pass: " +inputedRow)){
+                            System.out.println("No file found by given path.");
+                        }
+                    }
+                    if(inputedRow.equals("Exit")){
+                        break;
+                    }
+                }
                 break;
             default:
                 System.out.println("No such command");
         }
     }
-
+    private void saveCompanyToFile(){
+        String filePath;
+        System.out.print("Please, enter path to file. If no path specified, " +
+                "file wll be created/overwritten by default file path" +
+                "\n==>");
+        filePath=inputString();
+        controller.toFile(filePath);
+        System.out.println("File successfully saved by path: "+filePath);
+    }
     /**
      * Initializes airline company through console.
      * <p>
@@ -43,7 +79,7 @@ public class Viewer {
         System.out.print("Please, choose the company name: ");
         String companyName = inputString();
         System.out.println("Company " + companyName + " has been successfully created.");
-        controller.createCompany(companyName);
+            controller = new Controller(companyName,true);
     }
 
     /**
@@ -77,6 +113,7 @@ public class Viewer {
                 int cargoCapacity = inputIntWithValidation(1, false);//false for more than mode
                 System.out.print("\nInput passenger capacity more than 0:\n==>");
                 int passengerCapacity = inputIntWithValidation(1, false);//false for more than mode
+                System.out.println("\nInput engine code name(type anything to see available engines):\n");
                 Engine engine = inputEngine();
                 controller.addPlane(Plane.constructPlane(planeTypeCode, serialNumber, modelName,
                         crew, cargoCapacity, passengerCapacity, engine));
@@ -93,6 +130,7 @@ public class Viewer {
                 cargoCapacity = inputIntWithValidation(1, false);//false for more than mode
                 System.out.print("\nInput passenger capacity more than 0:\n==>");
                 passengerCapacity = inputIntWithValidation(1, false);//false for more than mode
+                System.out.println("\nInput engine code name(type anything to see available engines):\n");
                 engine = inputEngine();
                 controller.addPlane(Plane.constructPlane(planeTypeCode, serialNumber, modelName,
                         crew, cargoCapacity, passengerCapacity, engine));
@@ -105,33 +143,73 @@ public class Viewer {
      * Contains console interface.
      */
     private void inCompanyMenu() {
-        //TODO create a while(true) wrapper in inCompanyMenu() method
-        System.out.println("You are owner of company " + controller.getCompanyName() + "." +
-                "\nWhat do you want to do?" +
-                "\n1-Take a look at planes list" +
-                "\n2-Add new plane" +
-                "\n3-Change company name" +
-                "\n4-Find plane");
-        int choice = inputInt();
-        switch (choice) {
-            case (1):
-                SearchEngine.printPlanes(controller.getPlanesList());
+        int choice;
+        System.out.println("You are owner of company " + controller.getCompanyName() + ".");
+        while(true) {
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~" +
+                "\nPlease, choose the command: " +
+                    "\nWhat do you want to do?" +
+                    "\n1-Take a look at planes list" +
+                    "\n2-Add new plane" +
+                    "\n3-Change company name" +
+                    "\n4-Find plane"+
+                "\n5-Save to file"+
+                    "\n0-Exit");
+          choice = inputInt();
+            switch (choice) {
+                case (1):
+                    SearchEngine.printPlanes(controller.getPlanesList());
+                    break;
+                case (2):
+                    inputPlane();
+                    break;
+                case (3):
+                    System.out.print("Enter new company name: ");
+                    String newCompanyName = inputString();
+                    controller.setCompanyName(newCompanyName);
+                    System.out.println("Company name successfully changed on " + newCompanyName);
+                    break;
+                case (4):
+                    searchLauncher();
+                    break;
+                case(5):
+                    saveCompanyToFile();
+                    break;
+                case(0):
+                    System.exit(0);
+            }
+        }
+    }
+    private void searchLauncher(){
+        System.out.println("Please, choose search type: "+
+                "\n1-By serial number;"+
+                "\n2-By fuel consumption"+
+                "\n3-By fuel consumption between min and maximum"
+        +"\n4-By cargo capacity between min and maximum");
+        int choice=inputIntWithValidation(1,4); // minimum- 1, maximum - 4
+        switch(choice){
+            case(1):
+                System.out.println("Please, input serial number (MIN and MAX)");
+                SearchEngine.printPlanesBySerialNumber(controller.getPlanesList(),
+                        inputIntWithFormatValidation(), inputIntWithFormatValidation());
                 break;
-            case (2):
-                inputPlane();
+            case(2):
+                System.out.println("Please, input fuel consumption");
+                SearchEngine.printPlanesByFuelConsumption(controller.getPlanesList(),
+                        inputDoubleWithFormatValidation());
                 break;
-            case (3):
-                System.out.print("Enter new company name: ");
-                String newCompanyName = inputString();
-                controller.setCompanyName(newCompanyName);
-                System.out.println("Company name successfully changed on " + newCompanyName);
+            case(3):
+                System.out.println("Please, input minimal value and maximal value");
+                SearchEngine.printPlanesByFuelConsumption(controller.getPlanesList(),
+                        inputDoubleWithFormatValidation(), inputDoubleWithFormatValidation());
                 break;
-            case (4):
-                //TODO create a search engine in viewer
+            case(4):
+                System.out.println("Please, input minimal value and maximal value");
+                SearchEngine.printPlanesByCargoCapacity(controller.getPlanesList(),
+                        inputIntWithFormatValidation(),inputIntWithFormatValidation());
                 break;
         }
     }
-
     /**
      * Reads int value from console without any validation.
      *
@@ -140,6 +218,51 @@ public class Viewer {
     private int inputInt() {
         Scanner input = new Scanner(System.in);
         return input.nextInt();
+    }
+    /**
+     * Reads int value from console without any validation.
+     *
+     * @return (double) value
+     */
+    private double inputDouble() {
+        Scanner input = new Scanner(System.in);
+        return input.nextDouble();
+    }
+    /**Reads int value from console with validation on number format.
+     *
+     * @return (int) value
+     */
+    private int inputIntWithFormatValidation(){
+        int number;
+        while (true) {
+            try {
+                number = inputInt();
+                break;
+            } catch (InputMismatchException ex) {
+                LOGGER.debug("Caught InputMismatchException."+ex.getMessage());
+                LOGGER.error("Failed to read number from console.");
+                System.out.println("Please, type an INTEGER number. You entered something else");
+            }
+        }
+        return number;
+    }
+    /**Reads int value from console with validation on number format.
+     *
+     * @return (double) value
+     */
+    private double inputDoubleWithFormatValidation(){
+        double number;
+        while (true) {
+            try {
+                number = inputDouble();
+                break;
+            } catch (InputMismatchException ex) {
+                LOGGER.debug("Caught InputMismatchException."+ex.getMessage());
+                LOGGER.error("Failed to read number from console.");
+                System.out.println("Please, type an DOUBLE number (Type number inf format 43,95). You entered something else");
+            }
+        }
+        return number;
     }
 
     /**
@@ -153,12 +276,14 @@ public class Viewer {
      * @return (int) value
      */
     private int inputIntWithValidation(int from, int to) {
-        int number = inputInt();
+        int number = inputIntWithFormatValidation();
         while (number < from & number > to) {
             System.out.print("Please, choose between " + from + " and " + to);
             try {
                 number = inputInt();
             } catch (NumberFormatException ex) {
+                LOGGER.debug("Caught InputMismatchException."+ex.getMessage());
+                LOGGER.error("Failed to read number from console.");
                 System.out.println("Please, type an INTEGER number. You entered something else");
             }
         }
@@ -177,13 +302,15 @@ public class Viewer {
      * @return (int) value
      */
     private int inputIntWithValidation(int key, boolean notBigger) {
-        int number = inputInt();
+        int number = inputIntWithFormatValidation();
         if (notBigger) {
             while (number > key) {
                 System.out.print("Please, choose number below " + key);
                 try {
                     number = inputInt();
-                } catch (NumberFormatException ex) {
+                } catch (InputMismatchException ex) {
+                    LOGGER.debug("Caught InputMismatchException."+ex.getMessage());
+                    LOGGER.error("Failed to read number from console.");
                     System.out.println("Please, type an INTEGER number. You entered something else");
                 }
             }
@@ -192,7 +319,9 @@ public class Viewer {
                 System.out.print("Please, choose number below " + key);
                 try {
                     number = inputInt();
-                } catch (NumberFormatException ex) {
+                } catch (InputMismatchException ex) {
+                    LOGGER.debug("Caught InputMismatchException."+ex.getMessage());
+                    LOGGER.error("Failed to read number from console.");
                     System.out.println("Please, type the number. You entered something else");
                 }
             }
@@ -222,12 +351,14 @@ public class Viewer {
      */
     private Engine inputEngine() {
         Scanner input = new Scanner(System.in);
-        String engineModelName = input.nextLine();
+        String engineModelName;
         while (true) {
             try {
                 engineModelName = input.nextLine().toUpperCase();
                 return Engine.valueOf(engineModelName);
             } catch (IllegalArgumentException ex) {
+                LOGGER.debug("Caught IllegalArgumentException."+ex.getMessage());
+                LOGGER.error("Failed to get engine from console.");
                 System.out.println("No such engine found. Here's all available engines: ");
                 printEnginesList(controller.getEnginesList());
                 System.out.print("Input code name here==>");
