@@ -24,7 +24,8 @@ public class FileHandler {
      * Reading the row and parsing from it parameters for new plane.
      * Then constructs it and returns.
      *
-     * @param row
+     * @param row - String row like:
+     *           PlaneType|serialNumber|modelName|passengerCapacity|cargoCapacity|crew|engineModel
      * @return airline company object
      * @throws PlaneParseException - if
      */
@@ -68,13 +69,13 @@ public class FileHandler {
      *
      * @param company  AirlineCompany obj.
      * @param filePath - path to file. If it not exists, it will be created.
-     * @throws IOException - if got problems with file location or access.
+     * @exception  IOException - if got problems with file location or access.
      * @see PassengerPlane#toString() PassengerPlane toString method.
      * @see CargoPlane#toString() CargoPlane toString method.
      */
     public static void writeCompany(AirlineCompany company, String filePath) {
         File textFile = new File(filePath);
-        //checking file on existance. If it not exists, it will be created.
+        //checking file on existence. If it not exists, it will be created.
         if (!textFile.exists()) {
             try {
                 textFile.createNewFile();
@@ -124,12 +125,12 @@ public class FileHandler {
                         LOGGER.debug("A broken line was skipped. Variables status: {currentLine=\""+currentLine
                                 +"\", skipBrokenLinMode=\""+skipBrokenLineMode+"\"}");
                     } else {
-                        LOGGER.error("");
+                        LOGGER.error("A broken line was met. skipBrokenLineMode is false. Throwing FileParsingException");
                         throw new FileParsingException("An error occurred while parsing string row as Plane object. Message: " + e.getMessage());
                     }
             }
             }
-            fileInput.close();
+            fileInput.close(); // just in case
             return company;
         } catch (FileNotFoundException e) {
             LOGGER.debug("No file found. Given file path:  "+filePath);
@@ -171,7 +172,7 @@ public class FileHandler {
                         throw new FileParsingException("An error occurred while parsing string row as Plane object. Message: " + e.getMessage());
                     }
                 }
-            fileInput.close();
+            fileInput.close(); // just in case.
             return company;
         } catch (FileNotFoundException e) {
             LOGGER.debug("No file found. Given file path:  "+filePath);

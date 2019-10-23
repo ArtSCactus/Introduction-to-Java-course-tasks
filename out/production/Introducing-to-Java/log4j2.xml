@@ -39,6 +39,7 @@
             <AppenderRef ref="errorLogger" level="error" />
         </Logger>
         <Root level="info">
+            <AppenderRef ref="debugLogger" level="debug" />
             <AppenderRef ref="fileLogger" level="info" />
             <AppenderRef ref="errorLogger" level="error" />
         </Root>

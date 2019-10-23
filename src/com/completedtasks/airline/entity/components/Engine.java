@@ -9,10 +9,12 @@ public enum Engine {
     private String model;
 
     private String manufacturer;
+
     /**Engine's code name.
      * Using to store name of engine model in the file for the purpose of further read.
      */
     private String codeName;
+
     /**Fuel consumption for current engine.
      *
      */
@@ -50,5 +52,4 @@ public enum Engine {
                 ", fuelConsumption=" + fuelConsumption +
                 '}';
     }
-
 }

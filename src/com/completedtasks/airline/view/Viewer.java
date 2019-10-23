@@ -9,17 +9,21 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 //TODO: finish/improve logging. Log every user action? or only errors and debug info?
 //TODO: finish viewer: not all features was added to interface.
 //TODO: fix bugs
 //TODO: maybe create GUI?
+
 /**User interface
  * Realized through console.
  */
 public class Viewer {
+
     private static final Logger LOGGER = LogManager.getLogger(Viewer.class);
+
     private Controller controller;
 
     /**
@@ -158,7 +162,7 @@ public class Viewer {
           choice = inputInt();
             switch (choice) {
                 case (1):
-                    SearchEngine.printPlanes(controller.getPlanesList());
+                    printPlanes(controller.getPlanesList());
                     break;
                 case (2):
                     inputPlane();
@@ -185,28 +189,59 @@ public class Viewer {
                 "\n1-By serial number;"+
                 "\n2-By fuel consumption"+
                 "\n3-By fuel consumption between min and maximum"
-        +"\n4-By cargo capacity between min and maximum");
+        +"\n4-By cargo capacity between min and maximum"
+        +"\n5-By cargo capacity between min and maximum");
         int choice=inputIntWithValidation(1,4); // minimum- 1, maximum - 4
         switch(choice){
+            // by serial number min and max
             case(1):
                 System.out.println("Please, input serial number (MIN and MAX)");
-                SearchEngine.printPlanesBySerialNumber(controller.getPlanesList(),
-                        inputIntWithFormatValidation(), inputIntWithFormatValidation());
+                try {
+                    printPlanes(SearchEngine.getPlanesBySerialNumber(controller.getPlanesList(),
+                            inputIntWithFormatValidation(), inputIntWithFormatValidation()));
+                } catch(NoSuchElementException ex){
+                    System.out.println("No match found");
+                }
                 break;
+                // by fuel consumption single value
             case(2):
                 System.out.println("Please, input fuel consumption");
-                SearchEngine.printPlanesByFuelConsumption(controller.getPlanesList(),
-                        inputDoubleWithFormatValidation());
+                try {
+                    printPlanes(SearchEngine.getPlanesByFuelConsumption(controller.getPlanesList(),
+                            inputDoubleWithFormatValidation()));
+                }catch (NoSuchElementException ex){
+                    System.out.println("No match found");
+                }
                 break;
+                // by fuel consumption min and max
             case(3):
                 System.out.println("Please, input minimal value and maximal value");
-                SearchEngine.printPlanesByFuelConsumption(controller.getPlanesList(),
-                        inputDoubleWithFormatValidation(), inputDoubleWithFormatValidation());
+                try {
+                    printPlanes(SearchEngine.getPlanesByFuelConsumption(controller.getPlanesList(),
+                            inputDoubleWithFormatValidation(), inputDoubleWithFormatValidation()));
+                }catch(NoSuchElementException ex){
+                    System.out.println("No match found");
+                }
                 break;
+                // by cargo capacity
             case(4):
                 System.out.println("Please, input minimal value and maximal value");
-                SearchEngine.printPlanesByCargoCapacity(controller.getPlanesList(),
-                        inputIntWithFormatValidation(),inputIntWithFormatValidation());
+                try {
+                    printPlanes(SearchEngine.getPlanesByCargoCapacity(controller.getPlanesList(),
+                            inputIntWithFormatValidation(), inputIntWithFormatValidation()));
+                }catch (NoSuchElementException ex){
+                    System.out.println("No match found");
+                }
+                break;
+                // by passenger capacity min and max
+            case(5):
+                System.out.println("Please, input minimal value and maximal value");
+                try {
+                    printPlanes(SearchEngine.getPlanesByPassengerCapacity(controller.getPlanesList(),
+                            inputIntWithFormatValidation(), inputIntWithFormatValidation()));
+                }catch (NoSuchElementException ex){
+                    System.out.println("No match found");
+                }
                 break;
         }
     }
@@ -281,7 +316,7 @@ public class Viewer {
             System.out.print("Please, choose between " + from + " and " + to);
             try {
                 number = inputInt();
-            } catch (NumberFormatException ex) {
+            } catch (InputMismatchException ex) {
                 LOGGER.debug("Caught InputMismatchException."+ex.getMessage());
                 LOGGER.error("Failed to read number from console.");
                 System.out.println("Please, type an INTEGER number. You entered something else");
@@ -332,7 +367,7 @@ public class Viewer {
     /**
      * Reading String row from console.
      *
-     * @return
+     * @return (String row from console)
      */
     private String inputString() {
         Scanner input = new Scanner(System.in);
@@ -380,5 +415,44 @@ public class Viewer {
                     + "\nFuel consumption: " + engine.getFuelConsumption() + " kg/(kg-n/hour)"//kilogram of fuel per kilogram-force per hour
                     + "\nCode name: " + engine.getCodeName());
         }
+    }
+    /**
+     * Print all planes in airline company to console.
+     * <p>
+     * Prints information about each plane in airline company to console.
+     */
+    public static void printPlanes(List<Plane> planes) {
+        if(planes.size()==0){
+            System.out.println("Airline company does not have any plane.");
+            return;
+        }
+        for (Plane plane : planes) {
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                    "Plane: " + plane.getModelName() +
+                    "\nSerial number: " + plane.getSerialNumber() +
+                    "\nModel name: " + plane.getModelName() +
+                    "\nFuel consumption: " + plane.getFuelConsumption() +
+                    "\nCrew: " + plane.getCrew() +
+                    "\nPassenger capacity: " + plane.getPassengerCapacity()
+                    + "\nCargo capacity: " + plane.getCargoCapacity()+
+                    "\n~~~~~~~~~~~~~~~~~~~~~~~~");
+        }
+    }
+
+    /**Prints information about given plane to console.
+     *
+     * @param plane plane, that will be printed to console.
+     */
+    public static void printPlane(Plane plane) {
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                "Plane: " + plane.getModelName() +
+                "\nSerial number: " + plane.getSerialNumber() +
+                "\nModel name: " + plane.getModelName() +
+                "\nFuel consumption: " + plane.getFuelConsumption() +
+                "\nCrew: " + plane.getCrew() +
+                "\nPassenger capacity: " + plane.getPassengerCapacity()
+                + "\nCargo capacity: " + plane.getCargoCapacity()+
+                "\n~~~~~~~~~~~~~~~~~~~~~~~~");
+
     }
 }
