@@ -4,6 +4,7 @@ import com.completedtasks.airline.entity.components.Engine;
 import com.completedtasks.airline.entity.planes.Plane;
 import com.completedtasks.airline.exceptions.FileParsingException;
 import com.completedtasks.airline.util.Controller;
+import com.completedtasks.airline.util.SearchEngine;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

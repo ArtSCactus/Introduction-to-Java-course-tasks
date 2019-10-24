@@ -8,7 +8,7 @@ import com.completedtasks.airline.entity.components.Engine;
 import com.completedtasks.airline.entity.planes.Plane;
 import com.completedtasks.airline.util.Controller;
 import com.completedtasks.airline.util.FileHandler;
-import com.completedtasks.airline.view.SearchEngine;
+import com.completedtasks.airline.util.SearchEngine;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
